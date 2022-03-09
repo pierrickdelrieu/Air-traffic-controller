@@ -4,8 +4,8 @@ public class AirTravelController {
     private static int number_hour;
 
     public AirTravelController(){
-        number_died = 1;
-        number_hour = 0;
+        number_died = 0;
+        number_hour = 1;
     }
 
     public int getNumber_died() {

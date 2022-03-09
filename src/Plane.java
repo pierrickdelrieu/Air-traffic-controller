@@ -1,4 +1,4 @@
-public class PLane {
+public class Plane {
 
     private int hour_fuel;
     private int number_passenger;

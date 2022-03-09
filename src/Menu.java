@@ -26,7 +26,7 @@ public class Menu {
             System.out.println("3 - Requests menu");
         }
         else{
-            System.out.println("3 - advanced hour");
+            System.out.println("3 - Advanced hour");
         }
 
         System.out.println("Your choice : ");
