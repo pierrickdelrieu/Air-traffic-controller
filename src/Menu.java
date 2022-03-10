@@ -3,9 +3,10 @@ import java.util.Scanner;
 public class Menu {
 
     public Menu(){
-        System.out.println("\t -- Welcome to the Air contoller simulator -- \n" +
-                "Your mission, if you accept it, is to make sure all plane land during those 24 hour." +
-                "Good luck, agent !");
+        System.out.println("""
+                \t -- Welcome to the Air contoller simulator --
+                Your mission, if you accept it, is to make sure all plane land during those 24 hour.Good luck, agent ! \n
+                """);
 
     }
 
@@ -34,8 +35,41 @@ public class Menu {
 
     }
 
-    //public void displayRunwayMenu(Runway[] runway, )
-    //public void displayWaitingPlanesMenu()
+    public void displayWaitingPlanesMenu(PlaneController planeController){
+
+        System.out.printf("\t--- Waiting planes : %d ---\n", planeController.getNumberWaitingPlane());
+
+        for(Plane each : planeController.getWaitingPlaneList()){
+            System.out.printf("""
+                            %s :
+                            %d hour of fuel // %d passengers // %d hour needed on runway \n
+                            """,
+                    each.getName(), each.getHour_of_fuel(), each.getNumber_passenger(), each.getRunway_time()
+            );
+        }
+
+        System.out.println("\n");
+
+    }
+
+    public void displayRunwayMenu(PlaneController planeController){
+
+        System.out.printf("\t--- Runways : %d / %d occupied ---\n", planeController.getNumberOccupiedRunways(), AirTravelController.getNumber_runways());
+
+        for(Plane each : planeController.getRunways()){
+            System.out.printf("""
+                            %s :
+                            %s h remaining \n
+                            """,
+                    each.getName(), each.getRunway_time()
+            );
+        }
+
+        System.out.println("\n");
+
+    }
+
+    //public void ()
 
     public void displayAdvanceHourScreen(int currentTime, int nbRequest, int nbPass, int nbKill){
         System.out.printf("currentTime : %d\nnewTime : ", currentTime);

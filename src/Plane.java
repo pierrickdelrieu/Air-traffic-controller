@@ -1,18 +1,23 @@
 public class Plane {
 
-    private int hour_fuel;
+    private String name;
+    private int hour_of_fuel;
     private int number_passenger;
-    private boolean is_waiting;
-    private boolean is_landed;
-    private int runway_time_needed;
+    private int runway_time;
 
-
-    public int getHour_fuel() {
-        return hour_fuel;
+    public Plane(String name, int hour_of_fuel, int number_passenger, int runway_time) {
+        this.name = name;
+        this.hour_of_fuel = hour_of_fuel;
+        this.number_passenger = number_passenger;
+        this.runway_time = runway_time;
     }
 
-    public void setHour_fuel(int hour_fuel) {
-        this.hour_fuel = hour_fuel;
+    public int getHour_of_fuel() {
+        return hour_of_fuel;
+    }
+
+    public void setHour_of_fuel(int hour_of_fuel) {
+        this.hour_of_fuel = hour_of_fuel;
     }
 
     public int getNumber_passenger() {
@@ -23,27 +28,19 @@ public class Plane {
         this.number_passenger = number_passenger;
     }
 
-    public boolean isIs_waiting() {
-        return is_waiting;
+    public int getRunway_time() {
+        return runway_time;
     }
 
-    public void setIs_waiting(boolean is_waiting) {
-        this.is_waiting = is_waiting;
+    public void setRunway_time(int runway_time) {
+        this.runway_time = runway_time;
     }
 
-    public boolean isIs_landed() {
-        return is_landed;
+    public String getName() {
+        return name;
     }
 
-    public void setIs_landed(boolean is_landed) {
-        this.is_landed = is_landed;
-    }
-
-    public int getRunway_time_needed() {
-        return runway_time_needed;
-    }
-
-    public void setRunway_time_needed(int runway_time_needed) {
-        this.runway_time_needed = runway_time_needed;
+    public void setName(String name) {
+        this.name = name;
     }
 }
