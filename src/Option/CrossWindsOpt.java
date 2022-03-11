@@ -1,6 +1,6 @@
 package Option;
 
-import Runway.WaitingPlaneControler;
+import WaitingPlaneControler;
 
 public class CrossWindsOpt extends Option{
 

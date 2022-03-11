@@ -1,5 +1,3 @@
-package Runway;
-
 import Element.Plane;
 
 import java.util.ArrayList;
