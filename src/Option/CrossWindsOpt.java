@@ -1,7 +1,5 @@
 package Option;
 
-import WaitingPlaneControler;
-
 public class CrossWindsOpt extends Option{
 
     public CrossWindsOpt() {
@@ -12,5 +10,5 @@ public class CrossWindsOpt extends Option{
         return true;
     }
 
-    public void apply() { WaitingPlaneControler.removeFuel(1); }
+    public void apply() { }
 }

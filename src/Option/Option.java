@@ -1,9 +1,9 @@
 package Option;
 
 public abstract class Option {
-    private String title;
-    private String requirement;
-    private String consq;
+    private final String title;
+    private final String requirement;
+    private final String consq;
 
 
     public Option(String title, String requirement, String consq) {

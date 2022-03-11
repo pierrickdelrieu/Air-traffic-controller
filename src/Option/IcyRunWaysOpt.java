@@ -1,7 +1,5 @@
 package Option;
 
-import Runway.RunwayController;
-
 public class IcyRunWaysOpt extends Option{
 
     public IcyRunWaysOpt() {
@@ -12,7 +10,5 @@ public class IcyRunWaysOpt extends Option{
         return true;
     }
 
-    public void apply() {
-        RunwayController.addWaitTime(2);
-    }
+    public void apply() {}
 }
