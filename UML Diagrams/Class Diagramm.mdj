@@ -63,7 +63,7 @@
 											"top": 423,
 											"width": 516.24853515625,
 											"height": 13,
-											"text": "Request"
+											"text": "Request.Request"
 										},
 										{
 											"_type": "LabelView",
@@ -237,7 +237,7 @@
 											"top": 529,
 											"width": 516.24853515625,
 											"height": 13,
-											"text": "+Request(rarity: integer, title: String, desc: String, req: String, cons: String, array: Options)",
+											"text": "+Request.Request(rarity: integer, title: String, desc: String, req: String, cons: String, array: Options)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1341,7 +1341,7 @@
 											"top": 695,
 											"width": 351,
 											"height": 13,
-											"text": "Plane"
+											"text": "Element.Element"
 										},
 										{
 											"_type": "LabelView",
@@ -1742,7 +1742,7 @@
 											"top": 623,
 											"width": 199.8115234375,
 											"height": 13,
-											"text": "Runway"
+											"text": "Runway.RunwayController"
 										},
 										{
 											"_type": "LabelView",
@@ -2789,7 +2789,7 @@
 											"top": 79,
 											"width": 572.685546875,
 											"height": 13,
-											"text": "Menu"
+											"text": "UI.WaintingPlaneMenu"
 										},
 										{
 											"_type": "LabelView",
@@ -2893,7 +2893,7 @@
 											"top": 127,
 											"width": 572.685546875,
 											"height": 13,
-											"text": "+displayRunwayMenu(runway: Runway, name_occuppant: String, occupied_time: integer)",
+											"text": "+displayRunwayMenu(runway: Runway.RunwayController, name_occuppant: String, occupied_time: integer)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3270,7 +3270,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Request",
+					"name": "Request.Request",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -3390,7 +3390,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/S2ZcvpE1TVA="
 							},
-							"name": "Request",
+							"name": "Request.Request",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -3857,7 +3857,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Plane",
+					"name": "Element.Element",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -4114,7 +4114,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Runway",
+					"name": "Runway.RunwayController",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -4404,7 +4404,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Menu",
+					"name": "UI.WaintingPlaneMenu",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",

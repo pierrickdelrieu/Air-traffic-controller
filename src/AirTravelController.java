@@ -1,35 +1,45 @@
+import UI.*;
+
 public class AirTravelController {
 
-    private static int number_died;
-    private static int number_hour;
-    private static final int number_runways = 8;
+    private static AirTravelController instance;
 
-    public AirTravelController(){
-        number_died = 0;
-        number_hour = 1;
-    }
+    private AirTravelController(){} // fix instancifiaction of this classes
 
-    public static int getNumber_runways() {
-        return number_runways;
-    }
+    private int numberDied = 0;
+    private int numberHour = 0;
 
-    public static int getNumber_died() {
-        return number_died;
-    }
-    public static void setNumber_died(int number_died) {
-        AirTravelController.number_died = number_died;
+
+    public static AirTravelController getInstance(){
+        if (instance == null) {
+            instance = new AirTravelController();
+        }
+        return instance;
     }
 
-    public int getNumber_hour() {
-        return number_hour;
+
+    public void run() {
+        MenuController.run();
     }
-    public void setNumber_hour(int number_hour) {
-        AirTravelController.number_hour = number_hour;
+
+
+    public int getNumber_died() {
+        return numberDied;
+    }
+
+    public void setNumber_died(int number_died) {
+        numberDied = number_died;
+    }
+
+    public int getNumberHour() {
+        return numberHour;
+    }
+
+    public void setNumberHour(int number_hour) {
+        numberHour = number_hour;
     }
 
     public void pass_hour_removed_fuel(){
-        number_hour += 1;
+        numberHour += 1;
     }
-
-
 }

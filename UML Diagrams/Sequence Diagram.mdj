@@ -368,7 +368,7 @@
 															"top": 47,
 															"width": 98.841796875,
 															"height": 13,
-															"text": "Request Menu"
+															"text": "Request.Request UI.WaintingPlaneMenu"
 														},
 														{
 															"_type": "LabelView",
@@ -711,7 +711,7 @@
 															"top": 47,
 															"width": 98.12451171875,
 															"height": 13,
-															"text": "Runway menu"
+															"text": "Runway.RunwayController menu"
 														},
 														{
 															"_type": "LabelView",
@@ -2657,7 +2657,7 @@
 														"$ref": "AAAAAAF/S5qx0Kq2Fvg="
 													},
 													"edgePosition": 1,
-													"text": "Shows an index tabled of plane name and fuel left"
+													"text": "Shows an index tabled of Element.Element name and fuel left"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2902,7 +2902,7 @@
 														"$ref": "AAAAAAF/cAan/S+kBrU="
 													},
 													"edgePosition": 1,
-													"text": "Landing plane"
+													"text": "Landing Element.Element"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -3882,7 +3882,7 @@
 														"$ref": "AAAAAAF/ZM+HSAovO7w="
 													},
 													"edgePosition": 1,
-													"text": "Plane leave its runway"
+													"text": "Element.Element leave its runway"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -4459,7 +4459,7 @@
 													"top": 749,
 													"width": 264.76416015625,
 													"height": 13,
-													"text": "Select a plane to land if there is a free runway"
+													"text": "Select a Element.Element to land if there is a free runway"
 												},
 												{
 													"_type": "LabelView",
@@ -5202,7 +5202,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/S4VccackZ+A="
 									},
-									"name": "Shows an index tabled of plane name and fuel left",
+									"name": "Shows an index tabled of Element.Element name and fuel left",
 									"source": {
 										"$ref": "AAAAAAF/S5eANapzz9Y="
 									},
@@ -5217,7 +5217,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/S4VccackZ+A="
 									},
-									"name": "Landing plane",
+									"name": "Landing Element.Element",
 									"source": {
 										"$ref": "AAAAAAF/S5eANapzz9Y="
 									},
@@ -5317,7 +5317,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/S4VccackZ+A="
 									},
-									"name": "Plane leave its runway",
+									"name": "Element.Element leave its runway",
 									"source": {
 										"$ref": "AAAAAAF/THgHosXgE7k="
 									},
@@ -5416,7 +5416,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/S4VccackZ+A="
 									},
-									"name": "Request Menu",
+									"name": "Request.Request UI.WaintingPlaneMenu",
 									"represent": {
 										"$ref": "AAAAAAF/S5OOA6nj2ew="
 									},
@@ -5440,7 +5440,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/S4VccackZ+A="
 									},
-									"name": "Runway menu",
+									"name": "Runway.RunwayController menu",
 									"represent": {
 										"$ref": "AAAAAAF/TGjmjsU7WZ0="
 									},
@@ -5701,7 +5701,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/S4VccackZ+A="
 									},
-									"name": "Select a plane to land if there is a free runway",
+									"name": "Select a Element.Element to land if there is a free runway",
 									"interactionOperator": "opt",
 									"operands": [
 										{
