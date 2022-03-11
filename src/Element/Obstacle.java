@@ -1,7 +1,7 @@
 package Element;
 
 public class Obstacle extends Element {
-    public static enum ObstacleType {PROTESTOR};
+    public static enum ObstacleType {PROTESTOR, POLICE};
 
     private final int time;
     private final ObstacleType type;
@@ -21,10 +21,11 @@ public class Obstacle extends Element {
 
     @Override
     public String toString() {
-        if (this.type == ObstacleType.PROTESTOR) {
-            return "M";
+        switch (this.type) {
+            case POLICE -> {return "P";}
+            case PROTESTOR -> {return "M";}
+            default -> {return "";}
         }
-        return "";
     }
 
 }
