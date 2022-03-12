@@ -1,5 +1,6 @@
 package Option;
 
+import Element.ObstacleType;
 import RunwayWaiting.Runway;
 import RunwayWaiting.RunwayController;
 
@@ -13,6 +14,9 @@ public class SpaceToProtestOpt extends Option {
     }
 
     public void apply() {
-       // Runway.block(PROTESTOR, 10);
+        Runway[] randomRunway = RunwayController.getNEmptyRandomRunway(1);
+        for (Runway runway: randomRunway) {
+            runway.block(ObstacleType.PROTESTOR, 10);
+        }
     }
 }
