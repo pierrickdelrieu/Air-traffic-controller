@@ -22,7 +22,6 @@ public class AirTravelController {
         MenuController.run();
     }
 
-
     public int getNumber_died() {
         return numberDied;
     }

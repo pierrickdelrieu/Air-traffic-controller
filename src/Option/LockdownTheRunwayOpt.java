@@ -3,7 +3,7 @@ package Option;
 public class LockdownTheRunwayOpt extends Option{
 
     public LockdownTheRunwayOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Lockdown the runway", "Free runway", "One runway will be blocked for 8 hours");
     }
 
     public boolean isValid() {
