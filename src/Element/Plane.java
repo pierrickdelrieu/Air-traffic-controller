@@ -55,8 +55,8 @@ public class Plane extends Element {
         Runway runway = RunwayController.getEmptyRunway();
 
         if (runway != null) {
-//            WaitingPlaneController.removePlane(this);
-            runway.addPlane(this);
+            WaitingPlaneController.removePlane(this);
+            runway.addElement(this);
             return true;
         }
 
