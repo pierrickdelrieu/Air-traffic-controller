@@ -13,6 +13,6 @@ public class IceStormOpt extends Option{
     }
 
     public void apply() {
-        RunwayController.removeRandomRunway();
+//        RunwayController.removeRandomRunway();
     }
 }

@@ -1,5 +1,8 @@
 package Option;
 
+import RunwayWaiting.RunwayController;
+import RunwayWaiting.WaitingPlaneController;
+
 public class AllowLandingOpt extends Option{
 
     public AllowLandingOpt() {
@@ -7,10 +10,10 @@ public class AllowLandingOpt extends Option{
     }
 
     public boolean isValid() {
-        return true;
+        return RunwayController.getNbEmptyRunway() == 1;
     }
 
     public void apply() {
-
+        WaitingPlaneController.getRandomPlane().land();
     }
 }

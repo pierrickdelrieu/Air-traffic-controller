@@ -1,7 +1,6 @@
 package Element;
 
 public class Obstacle extends Element {
-    public static enum ObstacleType {PROTESTOR, POLICE};
 
     private final int time;
     private final ObstacleType type;
@@ -24,7 +23,7 @@ public class Obstacle extends Element {
         switch (this.type) {
             case POLICE -> {return "P";}
             case PROTESTOR -> {return "M";}
-            default -> {return "";}
+            default -> {return "O";}
         }
     }
 
