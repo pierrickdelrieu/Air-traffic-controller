@@ -8,13 +8,13 @@ public class main {
 
     public static void main(String[] args) {
 
-//        AirTravelController.getInstance().run();
+        AirTravelController.getInstance().run();
         for (Request request: RequestController.getRequest()) {
             System.out.println(request);
         }
 
-
-
     }
+
+
 
 }
