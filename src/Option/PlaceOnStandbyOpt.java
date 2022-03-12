@@ -1,16 +1,20 @@
 package Option;
 
+import Element.Plane;
+import RunwayWaiting.RunwayController;
+import RunwayWaiting.WaitingPlaneController;
+
 public class PlaceOnStandbyOpt extends Option{
 
     public PlaceOnStandbyOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Place on standby", "None", "The airplane will join the waiting list");
     }
 
     public boolean isValid() {
         return true;
     }
 
-    public void apply() {
-
+    public void apply(Plane plane) {
+        WaitingPlaneController.addPlane(plane);
     }
 }
