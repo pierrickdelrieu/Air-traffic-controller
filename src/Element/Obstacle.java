@@ -2,7 +2,7 @@ package Element;
 
 public class Obstacle extends Element {
 
-    private final int time;
+    private int time;
     private final ObstacleType type;
 
     public Obstacle(ObstacleType type, int time) {
@@ -16,6 +16,10 @@ public class Obstacle extends Element {
 
     public ObstacleType getType() {
         return this.type;
+    }
+
+    public void setTime(int number) {
+        this.time = number;
     }
 
     @Override
