@@ -1,16 +1,18 @@
 package Option;
 
+import RunwayWaiting.RunwayController;
+
 public class EmptyRandomRunwayOpt extends Option{
 
     public EmptyRandomRunwayOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Empty random runway", "1 full runway", "Empties a random runway.");
     }
 
     public boolean isValid() {
-        return true;
+        return RunwayController.getNbEmptyRunway() - RunwayController.RUNWAY_NB == 0;
     }
 
     public void apply() {
-
+        RunwayController.emptiesRandomRunway();
     }
 }

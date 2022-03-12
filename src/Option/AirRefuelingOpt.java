@@ -1,5 +1,7 @@
 package Option;
 
+import RunwayWaiting.WaitingPlaneController;
+
 public class AirRefuelingOpt extends Option{
 
     public AirRefuelingOpt() {
@@ -7,11 +9,10 @@ public class AirRefuelingOpt extends Option{
     }
 
     public boolean isValid() {
-//        return WaitingPlaneControler.hasWaitingPlane();
-        return true;
+        return WaitingPlaneController.hasWaitingPlane();
     }
 
     public void apply() {
-
+        WaitingPlaneController.setFuelAtMaxForAllPlane();
     }
 }

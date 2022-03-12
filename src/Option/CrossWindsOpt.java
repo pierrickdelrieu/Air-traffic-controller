@@ -1,5 +1,7 @@
 package Option;
 
+import RunwayWaiting.WaitingPlaneController;
+
 public class CrossWindsOpt extends Option{
 
     public CrossWindsOpt() {
@@ -10,5 +12,7 @@ public class CrossWindsOpt extends Option{
         return true;
     }
 
-    public void apply() { }
+    public void apply() {
+        WaitingPlaneController.removeFuelForAllPlane(1);
+    }
 }

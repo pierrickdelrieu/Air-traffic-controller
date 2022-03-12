@@ -1,6 +1,5 @@
 package Option;
 
-import Runway.RunwayController;
 
 public class IcyRunWaysOpt extends Option{
 
