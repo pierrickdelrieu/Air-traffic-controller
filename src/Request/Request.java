@@ -18,6 +18,10 @@ public class Request {
         this.options = options;
     }
 
+    public double getRarity() {
+        return rarity;
+    }
+
     @Override
     public String toString() {
         String opts = "";
@@ -25,9 +29,9 @@ public class Request {
             opts += option.toString() + "\n\n";
         }
 
-        return this.title + "  |  " + this.rarity + "\n" +
+        return "---- Request : " + this.title + " (" + (this.rarity) + "%) ---- \n" +
                 this.desc + "\n\n" +
-                "***** Options *****\n"
+                "***** Options *****\n\n"
                 + opts;
     }
 
