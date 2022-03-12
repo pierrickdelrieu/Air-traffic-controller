@@ -1,5 +1,9 @@
 package Element;
 
+import RunwayWaiting.Runway;
+import RunwayWaiting.RunwayController;
+import RunwayWaiting.WaitingPlaneController;
+
 public class Plane extends Element {
 
     enum PlaneType {WAITING, LANDED} ;
@@ -9,6 +13,8 @@ public class Plane extends Element {
     private int hourOfFuel;
     private final int nbPassenger;
     private int runwayTime;
+    public final int MAXFUEL = 24;
+
 
     public Plane(String name, int hour_of_fuel, int number_passenger, int runway_time) {
         this.name = name;
@@ -29,7 +35,6 @@ public class Plane extends Element {
         return nbPassenger;
     }
 
-
     public int getRunwayTime() {
         return runwayTime;
     }
@@ -40,6 +45,22 @@ public class Plane extends Element {
 
     public String getName() {
         return name;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean land() {
+        Runway runway = RunwayController.getEmptyRunway();
+
+        if (runway != null) {
+//            WaitingPlaneController.removePlane(this);
+            runway.addPlane(this);
+            return true;
+        }
+
+        return false;
     }
 
 
