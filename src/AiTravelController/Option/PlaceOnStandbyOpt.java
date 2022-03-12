@@ -9,6 +9,7 @@ public class PlaceOnStandbyOpt extends Option{
         super("Place on standby", "None", "The airplane will join the waiting list");
     }
 
+    @Override
     public boolean isValid() {
         return true;
     }
