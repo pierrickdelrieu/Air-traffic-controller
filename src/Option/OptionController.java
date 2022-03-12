@@ -19,7 +19,7 @@ public class OptionController {
         options.put("lockDownTheRunway", new LockdownTheRunwayOpt());
         options.put("placeOnStandby", new PlaceOnStandbyOpt());
         options.put("planesLandAnyways", new PlanesLandAnywaysOpt());
-        options.put("refuseThe", new RefuseThemOpt());
+        options.put("refuseThem", new RefuseThemOpt());
         options.put("rescueTeam", new RescueTeamOpt());
         options.put("spaceToProtest", new SpaceToProtestOpt());
 
