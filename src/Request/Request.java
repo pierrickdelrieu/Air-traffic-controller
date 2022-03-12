@@ -1,7 +1,6 @@
 package Request;
 
 import Option.Option;
-
 import java.util.ArrayList;
 
 public class Request {

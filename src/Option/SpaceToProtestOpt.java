@@ -1,13 +1,18 @@
 package Option;
 
+import RunwayWaiting.Runway;
+import RunwayWaiting.RunwayController;
+
 public class SpaceToProtestOpt extends Option {
     public SpaceToProtestOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Allow tem the space to protest", "Free runway", "One runway will be blocked for 10 hours");
     }
 
     public boolean isValid() {
-        return true;
+        return RunwayController.hasRunway();
     }
 
-    public void apply() {}
+    public void apply() {
+       // Runway.block(PROTESTOR, 10);
+    }
 }

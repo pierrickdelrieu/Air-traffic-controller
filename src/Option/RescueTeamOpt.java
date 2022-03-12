@@ -3,7 +3,7 @@ package Option;
 public class RescueTeamOpt extends Option{
 
     public RescueTeamOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Rescue team", "None", "Reduces the number of dead passengers by 100");
     }
 
     public boolean isValid() {
