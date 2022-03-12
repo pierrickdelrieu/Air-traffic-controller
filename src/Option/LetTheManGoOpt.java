@@ -3,7 +3,8 @@ package Option;
 public class LetTheManGoOpt extends Option{
 
     public LetTheManGoOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Let the man go", "None", "He crashes the plane into another random Waiting plane" +
+                "and saves christmas. Remove the waiting plane (no cost) and kill 100 passengers.");
     }
 
     public boolean isValid() {

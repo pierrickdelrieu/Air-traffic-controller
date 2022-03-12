@@ -15,7 +15,6 @@ public class Plane extends Element {
     private int runwayTime;
     public final int MAXFUEL = 24;
 
-
     public Plane(String name, int hour_of_fuel, int number_passenger, int runway_time) {
         this.name = name;
         this.hourOfFuel = hour_of_fuel;
@@ -34,6 +33,7 @@ public class Plane extends Element {
     public int getNbPassenger() {
         return nbPassenger;
     }
+
 
     public int getRunwayTime() {
         return runwayTime;
