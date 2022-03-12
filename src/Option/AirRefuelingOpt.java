@@ -3,10 +3,11 @@ package Option;
 public class AirRefuelingOpt extends Option{
 
     public AirRefuelingOpt() {
-        super("Cross winds", "None", "Remove 1 hour of fuel from all waiting planes in air");
+        super("Air refueling", "At least one plan in air", "Adding maximum fuel to all waiting airplanes in air");
     }
 
     public boolean isValid() {
+//        return WaitingPlaneControler.hasWaitingPlane();
         return true;
     }
 

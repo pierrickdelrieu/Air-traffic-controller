@@ -1,8 +1,10 @@
+package RunwayWaiting;
+
 import Element.Plane;
 
 import java.util.ArrayList;
 
-public class WaitingPlaneControler {
+public class WaitingPlaneController {
     private static ArrayList<Plane> planes = new ArrayList<>();
 
 

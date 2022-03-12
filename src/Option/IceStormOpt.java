@@ -1,6 +1,6 @@
 package Option;
 
-import Runway.RunwayController;
+import RunwayWaiting.RunwayController;
 
 public class IceStormOpt extends Option{
 
