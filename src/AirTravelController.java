@@ -38,6 +38,14 @@ public class AirTravelController {
         numberHour = number_hour;
     }
 
+    /**
+     * Change the number of dead people
+     * @param number the number of dead people (positive number) or the number of save people (negative number)
+     */
+    public void setNbOfDeadPeople(int number){
+        numberDied += number;
+    }
+
     public void pass_hour_removed_fuel(){
         numberHour += 1;
     }
