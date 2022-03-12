@@ -29,7 +29,7 @@ public class Request {
             opts += option.toString() + "\n\n";
         }
 
-        return "---- AiTravelController.Request : " + this.title + " (" + (this.rarity) + "%) ---- \n" +
+        return "---- AiTravelController.Request : " + this.title + " (" + this.rarity + "%) ---- \n" +
                 this.desc + "\n\n" +
                 "***** Options *****\n\n"
                 + opts;
