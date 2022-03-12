@@ -78,28 +78,42 @@ public class RequestController {
 
         Request[] chosenRequests = new Request[number];
 
-        Integer[] distribution = new Integer[100];
-        int threshold = 0;
-        int requestCounter = 0;
+        int nbRequests = requests.size();
 
-        for(int i = 0; i<100 ; i++){
-            if(i == threshold){
-                threshold += (int) (requests.get(requestCounter).getRarity());
-                requestCounter++;
-            }
-            distribution[i] = requestCounter;
-        }
+        for(int i=0 ; i<number ; i++){
 
-        for (int i=0 ; i<number ; i++) {
             Random rand = new Random();
-            int nbRand = rand.nextInt(100);
+            double nbRand = rand.nextDouble(100);
+            //System.out.println("nbRand : " + nbRand);
 
-            int randomRequestNumber = distribution[nbRand] - 1;
-            chosenRequests[i] = requests.get(randomRequestNumber);
+            double min = 0.0;
+            double max = requests.get(0).getRarity();
 
+            for(int j = 0; j<nbRequests; j++){
+
+                //System.out.println("min : " + min + " max : " + max);
+                if( (min <= nbRand) && (nbRand < max ) ){
+                    chosenRequests[i] = requests.get(j);
+                }
+
+                if(j < nbRequests - 1) {
+                    min += requests.get(j).getRarity();
+                    max += requests.get(j + 1).getRarity();
+                }
+            }
         }
 
         return chosenRequests;
     }
+
+    /*
+    public static void main(String[] args) {
+        getRequest();
+        Request[] aa = chooseRandomRequest(3);
+        for (Request each : aa) {
+            System.out.println(each);
+        }
+    }
+    */
 
 }

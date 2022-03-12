@@ -11,5 +11,6 @@ public class PlanesLandAnywaysOpt extends Option{
     }
 
     public void apply() {
+
     }
 }

@@ -1,6 +1,6 @@
 package AiTravelController.Option;
-
-import AiTravelController.RunwayWaiting.RunwayController;
+import AiTravelController.RunwayWaiting.*;
+import AiTravelController.Element.*;
 
 public class SpaceToProtestOpt extends Option {
     public SpaceToProtestOpt() {
@@ -12,6 +12,9 @@ public class SpaceToProtestOpt extends Option {
     }
 
     public void apply() {
-       // Runway.block(PROTESTOR, 10);
+        Runway[] randomRunway = RunwayController.getNEmptyRandomRunway(1);
+        for (Runway runway: randomRunway) {
+            runway.block(ObstacleType.PROTESTOR, 10);
+        }
     }
 }
