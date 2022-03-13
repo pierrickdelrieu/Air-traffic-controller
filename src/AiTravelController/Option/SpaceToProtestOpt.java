@@ -4,13 +4,15 @@ import AiTravelController.Element.*;
 
 public class SpaceToProtestOpt extends Option {
     public SpaceToProtestOpt() {
-        super("Allow tem the space to protest", "Free runway", "One runway will be blocked for 10 hours");
+        super("Allow them the space to protest", "Free runway", "One runway will be blocked for 10 hours");
     }
 
+    @Override
     public boolean isValid() {
         return RunwayController.hasRunway();
     }
 
+    @Override
     public void apply() {
         Runway[] randomRunway = RunwayController.getNEmptyRandomRunway(1);
         for (Runway runway: randomRunway) {

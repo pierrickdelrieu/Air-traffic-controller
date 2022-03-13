@@ -11,6 +11,12 @@ public class main {
             System.out.println(request);
         }
 
+        System.out.println("Selected requests\n");
+        Request[] selectedRequests = RequestController.chooseRandomRequest(3);
+        for (Request each : selectedRequests) {
+            System.out.println(each);
+        }
+
     }
 
 
