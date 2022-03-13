@@ -1,49 +1,71 @@
 package AiTravelController.RunwayWaiting;
 
 import AiTravelController.Element.*;
+import AiTravelController.UI.MenuType;
 
 
 public class Runway {
-    private Element elements;
+    private Element element = null;
 
     /**
-     *
-     * @return
+     * Reduce time of element.
+     * This function is called when the main game time is advanced.
+     * @param hour int number of hours has decreased
+     */
+    public void reduceTimeOfElement(int hour) {
+        element.setRunwayTime(element.getRunwayTime() - hour);
+    }
+
+    /**
+     * Check if runway has an element
+     * @return true if runway is empty and false otherwise
      */
     public boolean isEmpty() {
-        if (elements == null) {
+        if (element == null) {
             return true;
         }
         return false;
     }
 
     /**
-     *
+     * Empty the runway
      */
     public void empties() {
-        elements = null;
+        element = null;
     }
 
     /**
-     *
-     * @param element
-     * @return
+     * Add element to the runway if the runway is empty
+     * @param element element to add
+     * @return true if the element has been added and false otherwise
      */
     public boolean addElement(Element element) {
-        if (elements != null) {
-            elements = element;
+        if (this.element == null) {
+            this.element = element;
             return true;
         }
         return false;
     }
 
     /**
-     *
-     * @param type
-     * @param timeOfBlocking
+     * Block the runway
+     * @param type Type of obstacle
+     * @param timeOfBlocking blocking time
      */
     public void block(ObstacleType type, int timeOfBlocking) {
         addElement(new Obstacle(type, timeOfBlocking));
     }
 
+
+    @Override
+    public String toString() {
+        if (element != null) {
+            if (element.getClass().getName().equals("AiTravelController.Element.Plane")) {
+                return "----------  " + element.toString(MenuType.LANDING) + "  ----------";
+            } else {
+                return "----------  " + element + "  ----------";
+            }
+        }
+        return "---------------------------------------";
+    }
 }
