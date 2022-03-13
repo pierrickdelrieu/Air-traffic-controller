@@ -3,10 +3,11 @@ package AiTravelController.Element;
 import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
+import AiTravelController.UI.MenuType;
+
 
 public class Plane extends Element {
 
-    enum PlaneType {WAITING, LANDED} ;
     public final int MAXFUEL = 24;
 
     private final String name;
@@ -20,18 +21,31 @@ public class Plane extends Element {
         this.nbPassenger = nbPassenger;
     }
 
+    /**
+     * @return int hour of fuel of the plane
+     */
     public int getHourOfFuel() {
         return hourOfFuel;
     }
 
+    /**
+     * Setter of hour of fuel of the plane
+     * @param hour_of_fuel int new value of hour of fuel
+     */
     public void setHourOfFuel(int hour_of_fuel) {
         this.hourOfFuel = hour_of_fuel;
     }
 
+    /**
+     * @return in number of passages on board the plane
+     */
     public int getNbPassenger() {
         return nbPassenger;
     }
 
+    /**
+     * @return String name of the plane
+     */
     public String getName() {
         return name;
     }
@@ -41,7 +55,7 @@ public class Plane extends Element {
      * @return true if the plane has been done and false otherwise
      */
     public boolean land() {
-        Runway runway = RunwayController.getEmptyRunway();
+        Runway runway = RunwayController.getInstance().getEmptyRunway();
 
         if (runway != null) {
             WaitingPlaneController.removePlane(this);
@@ -53,13 +67,13 @@ public class Plane extends Element {
     }
 
 
-    public String toString(PlaneType type) {
-        if (type == PlaneType.WAITING) {
+    @Override
+    public String toString(MenuType type) {
+        if (type == MenuType.WAITING) {
             return this.name + ": \n" +
-                    this.hourOfFuel + " hour of fuel // " + this.nbPassenger + " passengers // " + this.getRunwayTime() + " hour needed on runway\n";
-        } else if (type == PlaneType.LANDED) {
-            return this.name + ": \n" +
-                    this.getRunwayTime() + "h remaining \n";
+                    this.hourOfFuel + " hour of fuel || " + this.nbPassenger + " passengers || " + this.getRunwayTime() + " hour needed on runway\n";
+        } else if (type == MenuType.LANDING) {
+            return "PLANE " + this.name + " : " + this.getRunwayTime() + "h";
         }
         return "";
     }

@@ -19,8 +19,8 @@ public class Obstacle extends Element {
     @Override
     public String toString() {
         switch (this.type) {
-            case POLICE -> {return "P";}
-            case PROTESTOR -> {return "M";}
+            case POLICE -> {return "  POLICE : " + getRunwayTime() + "h  ";}
+            case PROTESTOR -> {return "PROTESTOR : " + getRunwayTime() + "h ";}
             default -> {return "O";}
         }
     }
