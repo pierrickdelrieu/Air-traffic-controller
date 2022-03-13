@@ -12,7 +12,5 @@ public class IceStormOpt extends Option{
         return RunwayController.getInstance().hasRunway();
     }
 
-    public void apply() {
-//        RunwayController.removeRandomRunway();
-    }
+    public void apply() { RunwayController.removeFreeRunway(); }
 }
