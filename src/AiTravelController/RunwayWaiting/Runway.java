@@ -13,7 +13,9 @@ public class Runway {
      * @param hour int number of hours has decreased
      */
     public void reduceTimeOfElement(int hour) {
-        element.setRunwayTime(element.getRunwayTime() - hour);
+        if (element != null) {
+            element.setRunwayTime(element.getRunwayTime() - hour);
+        }
     }
 
     /**
