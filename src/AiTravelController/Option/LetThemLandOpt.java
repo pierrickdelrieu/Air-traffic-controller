@@ -11,7 +11,7 @@ public class LetThemLandOpt extends Option{
     }
 
     public boolean isValid() {
-        return RunwayController.hasRunway();
+        return RunwayController.getInstance().getNbEmptyRunway() >= 1;
     }
 
     public void apply() {

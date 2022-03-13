@@ -15,6 +15,6 @@ public class RefuseThemOpt extends Option{
 
     @Override
     public void apply() {
-        AirTravelController.getInstance().setNbOfDeadPeople(50);
+        AirTravelController.getInstance().addNbOfDeadPeople(50);
     }
 }

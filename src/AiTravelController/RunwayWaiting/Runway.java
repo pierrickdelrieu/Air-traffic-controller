@@ -70,4 +70,6 @@ public class Runway {
         }
         return "---------------------------------------";
     }
+
+    public Element getElements(){ return element; }
 }

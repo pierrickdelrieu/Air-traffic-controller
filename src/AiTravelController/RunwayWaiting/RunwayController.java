@@ -186,4 +186,10 @@ public class RunwayController {
             }
         }
     }
+
+    public static void addWaitingTimeToPlanesOnRUnways(int time){
+        /*Element elements = RunwayController.getInstance().get;
+        if (elements.equals(Plane.class))
+            elements.setRunwayTime(time);*/
+    }
 }

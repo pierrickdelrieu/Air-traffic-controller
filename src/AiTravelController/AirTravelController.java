@@ -78,7 +78,7 @@ public class AirTravelController {
      * Change the number of dead people
      * @param number the number of dead people (positive number) or the number of save people (negative number)
      */
-    public void setNbOfDeadPeople(int number){
+    public void addNbOfDeadPeople(int number){
         numberDied += number;
     }
 }
