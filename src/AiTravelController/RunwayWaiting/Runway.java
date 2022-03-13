@@ -4,7 +4,7 @@ import AiTravelController.Element.*;
 
 
 public class Runway {
-    private Element elements;
+    private static Element elements;
 
     /**
      *
@@ -36,6 +36,8 @@ public class Runway {
         }
         return false;
     }
+
+    public static Element getElements(){ return elements; }
 
     /**
      *

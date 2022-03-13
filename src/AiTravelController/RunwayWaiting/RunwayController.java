@@ -1,11 +1,14 @@
 package AiTravelController.RunwayWaiting;
 
+import AiTravelController.Element.Element;
+import AiTravelController.Element.Plane;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class RunwayController {
 
-    public static final int RUNWAY_NB = 8;
+    public static int RUNWAY_NB = 8;
 
     private static final Runway[] runways = new Runway[RUNWAY_NB];
 
@@ -162,6 +165,16 @@ public class RunwayController {
     public Runway getRandomEmptyRunways() {
 
         return null;
+    }
+
+    public static void removeFreeRunway(){
+        RUNWAY_NB -= 1;
+    }
+
+    public static void addWaitingTime(int time){
+        Element elements = Runway.getElements();
+        if (elements.equals(Plane.class))
+            elements.setRunwayTime(time);
     }
 
 }

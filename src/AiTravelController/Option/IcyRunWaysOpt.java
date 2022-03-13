@@ -1,5 +1,6 @@
 package AiTravelController.Option;
 
+import AiTravelController.RunwayWaiting.RunwayController;
 
 public class IcyRunWaysOpt extends Option{
 
@@ -12,5 +13,6 @@ public class IcyRunWaysOpt extends Option{
     }
 
     public void apply() {
+        RunwayController.addWaitingTime(2);
     }
 }
