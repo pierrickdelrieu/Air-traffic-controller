@@ -4,17 +4,45 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RunwayController {
+    private RunwayController(){
+        for (int i = 0; i < runways.length; i++) {
+            runways[i] = new Runway();
+        }
+    }
 
-    public static final int RUNWAY_NB = 8;
+    private static RunwayController instance = null;
 
-    private static final Runway[] runways = new Runway[RUNWAY_NB];
+    public static RunwayController getInstance() {
+        if (instance == null) {
+            instance = new RunwayController();
+        }
+        return instance;
+    }
+
+    public final int RUNWAY_NB = 8;
+
+    private final Runway[] runways = new Runway[RUNWAY_NB];
+
+    public Runway[] getRunways() {
+        return runways;
+    }
+
 
     /**
-     *
-     * @param number
-     * @return
+     * Reduce the blocking time of the element on all runways
+     * @param hour int reduce time
      */
-    public static Runway[] getNEmptyRandomRunway(int number) {
+    public void reduceBlockingTimeOfElementsOnRunways(int hour) {
+        for (Runway runway: runways) {
+            runway.reduceTimeOfElement(hour);
+        }
+    }
+    /**
+     * Getter of N empty random runway
+     * @param number desired number of runways
+     * @return Array of empty runway
+     */
+    public Runway[] getNEmptyRandomRunway(int number) {
         Runway[] x = new Runway[number];
 
         Random rand = new Random();
@@ -41,11 +69,11 @@ public class RunwayController {
     }
 
     /**
-     *
-     * @param number
-     * @return
+     * Getter of N full random runway
+     * @param number desired number of runways
+     * @return Array of full runway
      */
-    public static Runway[] getNFullRandomRunway(int number) {
+    public Runway[] getNFullRandomRunway(int number) {
         Runway[] x = new Runway[number];
 
         Random rand = new Random();
@@ -72,9 +100,9 @@ public class RunwayController {
     }
 
     /**
-     *
+     * Empty a random runway
      */
-    public static void emptiesRandomRunway() {
+    public void emptiesRandomRunway() {
         Random rand = new Random();
         int nbRunway = rand.nextInt(7);
 
@@ -82,10 +110,10 @@ public class RunwayController {
     }
 
     /**
-     *
-     * @return
+     * Check of whether there is a runway in the system
+     * @return true if there is a runway in the system and false otherwise
      */
-    public static boolean hasRunway() {
+    public boolean hasRunway() {
         for (Runway runway: runways) {
             if (runway != null) {
                 return true;
@@ -95,10 +123,10 @@ public class RunwayController {
     }
 
     /**
-     *
-     * @return
+     * Getter of all empty runways
+     * @return Array of all empty runways
      */
-    public static ArrayList<Runway> getEmptyRunways() {
+    public ArrayList<Runway> getEmptyRunways() {
         ArrayList<Runway> emptyRunway = new ArrayList<>();
 
         for (Runway runway: runways) {
@@ -111,10 +139,10 @@ public class RunwayController {
 
 
     /**
-     *
-     * @return
+     * Getter of one empty runway
+     * @return Empty runway
      */
-    public static Runway getEmptyRunway() {
+    public Runway getEmptyRunway() {
         ArrayList<Runway> x = getEmptyRunways();
 
         if (x.size() != 0) {
@@ -128,7 +156,7 @@ public class RunwayController {
      * Check if there is at least ${number} empty runway
      * @return a boolean of the condition
      */
-    public static int getNbEmptyRunway() {
+    public int getNbEmptyRunway() {
         int cpt = 0;
 
         for (Runway runway: runways) {
@@ -141,8 +169,8 @@ public class RunwayController {
     }
 
     /**
-     *
-     * @param number ok
+     * Empty the elements of N random track
+     * @param number int number of tracks to be emptied
      */
     public void emptiesNRandomRunway(int number) {
         if (number > (RUNWAY_NB - getNbEmptyRunway())) {
@@ -158,10 +186,4 @@ public class RunwayController {
             }
         }
     }
-
-    public Runway getRandomEmptyRunways() {
-
-        return null;
-    }
-
 }
