@@ -18,21 +18,26 @@ public class Request {
         this.options = options;
     }
 
+    /**
+     * Getter of rarity
+     * @return double rarity of the request
+     */
     public double getRarity() {
         return rarity;
     }
 
+    /**
+     * Getter of options
+     * @return Array of request options
+     */
+    public ArrayList<Option> getOptions() {
+        return options;
+    }
+
     @Override
     public String toString() {
-        String opts = "";
-        for (Option option: options) {
-            opts += option.toString() + "\n\n";
-        }
-
-        return "---- AiTravelController.Request : " + this.title + " (" + this.rarity + "%) ---- \n" +
-                this.desc + "\n\n" +
-                "***** Options *****\n\n"
-                + opts;
+        return "---- Request : " + this.title + " (" + (this.rarity) + "%) ---- \n" +
+                this.desc + "\n\n";
     }
 
 }
