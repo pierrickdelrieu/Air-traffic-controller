@@ -3,6 +3,7 @@ package AiTravelController.UI;
 import AiTravelController.AirTravelController;
 import AiTravelController.Request.Request;
 import AiTravelController.Request.RequestController;
+import AiTravelController.RunwayWaiting.RunwayController;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class AdvanceHourMenu extends Menu {
     }
 
 
-
+    @Override
     public void content() {
         if (AirTravelController.getInstance().getNumberDied() >= 350) {
             System.out.println("                      ***** GAME OVER *****");
@@ -41,6 +42,7 @@ public class AdvanceHourMenu extends Menu {
 
             AirTravelController.getInstance().changeCurrentRequest(RequestController.getInstance().chooseRandomRequest(nbRequest));
             System.out.println("Number of new requests coming in : " + nbRequest);
+            RunwayController.getInstance().reduceBlockingTimeOfElementsOnRunways(1);
         }
     }
 }
