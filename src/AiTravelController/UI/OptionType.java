@@ -1,0 +1,3 @@
+package AiTravelController.UI;
+
+enum OptionType {MAIN_MENU, WAITING_MENU, LANDING_MENU, REQUEST_MENU, ADVANCE_HOUR_MENU, QUIT}

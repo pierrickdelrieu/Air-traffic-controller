@@ -9,12 +9,12 @@ public class SpaceToProtestOpt extends Option {
 
     @Override
     public boolean isValid() {
-        return RunwayController.hasRunway();
+        return RunwayController.getInstance().hasRunway();
     }
 
     @Override
     public void apply() {
-        Runway[] randomRunway = RunwayController.getNEmptyRandomRunway(1);
+        Runway[] randomRunway = RunwayController.getInstance().getNEmptyRandomRunway(1);
         for (Runway runway: randomRunway) {
             runway.block(ObstacleType.PROTESTOR, 10);
         }

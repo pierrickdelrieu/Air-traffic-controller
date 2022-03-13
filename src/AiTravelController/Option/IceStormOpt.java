@@ -9,7 +9,7 @@ public class IceStormOpt extends Option{
     }
 
     public boolean isValid() {
-        return RunwayController.hasRunway();
+        return RunwayController.getInstance().hasRunway();
     }
 
     public void apply() { RunwayController.removeFreeRunway(); }

@@ -1,4 +1,7 @@
 package AiTravelController.Element;
+
+import AiTravelController.UI.MenuType;
+
 public abstract class Element {
     private int runwayTime;
 
@@ -19,5 +22,9 @@ public abstract class Element {
      */
     public void setRunwayTime(int runwayTime) {
         this.runwayTime = runwayTime;
+    }
+
+    public String toString(MenuType landed) {
+        return "";
     }
 }
