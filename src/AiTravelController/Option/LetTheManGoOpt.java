@@ -2,7 +2,6 @@ package AiTravelController.Option;
 
 import AiTravelController.AirTravelController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
-import AiTravelController.Element.Plane;
 
 public class LetTheManGoOpt extends Option{
 
@@ -16,8 +15,7 @@ public class LetTheManGoOpt extends Option{
     }
 
     public void apply() {
-        int number_died = AirTravelController.getInstance().getNumber_died();
-        AirTravelController.getInstance().setNumber_died(number_died + 100);
-        WaitingPlaneController.removePlane(WaitingPlaneController.getRandomPlane());
+        WaitingPlaneController.removePlane(WaitingPlaneController.getRandomPlane()); // removing random plane
+        AirTravelController.getInstance().addNbOfDeadPeople(100); // killing 100 passengers
     }
 }

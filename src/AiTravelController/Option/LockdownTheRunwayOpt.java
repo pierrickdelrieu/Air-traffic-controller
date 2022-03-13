@@ -11,9 +11,9 @@ public class LockdownTheRunwayOpt extends Option{
         super("Lockdown the runway", "Free runway", "One runway will be blocked for 8 hours");
     }
 
-    public boolean isValid() { return RunwayController.hasRunway();}
+    public boolean isValid() { return RunwayController.getInstance().getNbEmptyRunway() >= 1;}
 
     public void apply() {
-        Objects.requireNonNull(RunwayController.getEmptyRunway()).block(ObstacleType.OTHER, 8);
+        Objects.requireNonNull(RunwayController.getInstance().getEmptyRunway()).block(ObstacleType.OTHER, 8);
     }
 }

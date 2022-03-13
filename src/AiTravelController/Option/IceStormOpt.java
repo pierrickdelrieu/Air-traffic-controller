@@ -9,8 +9,8 @@ public class IceStormOpt extends Option{
     }
 
     public boolean isValid() {
-        return RunwayController.getInstance().hasRunway();
+        return RunwayController.getInstance().getNbEmptyRunway() >= 1;
     }
 
-    public void apply() { RunwayController.removeFreeRunway(); }
+    public void apply() { RunwayController.getInstance().getEmptyRunway().empties(); }
 }
