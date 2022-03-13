@@ -11,7 +11,7 @@ public class AllowLandingOpt extends Option{
 
     @Override
     public boolean isValid() {
-        return RunwayController.getNbEmptyRunway() == 1;
+        return RunwayController.getInstance().getNbEmptyRunway() == 1;
     }
 
     @Override

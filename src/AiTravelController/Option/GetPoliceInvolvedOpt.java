@@ -11,12 +11,12 @@ public class GetPoliceInvolvedOpt extends Option{
 
     @Override
     public boolean isValid() {
-        return RunwayController.getNbEmptyRunway() >= 2;
+        return RunwayController.getInstance().getNbEmptyRunway() >= 2;
     }
 
     @Override
     public void apply() {
-        Runway[] randomRunway = RunwayController.getNEmptyRandomRunway(2);
+        Runway[] randomRunway = RunwayController.getInstance().getNEmptyRandomRunway(2);
 
         for (Runway runway: randomRunway) {
             runway.block(ObstacleType.POLICE, 4);
