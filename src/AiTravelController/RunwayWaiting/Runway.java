@@ -7,6 +7,8 @@ import AiTravelController.UI.MenuType;
 public class Runway {
     private Element element = null;
 
+    public Element getElement(){return element;}
+
     /**
      * Reduce time of element.
      * This function is called when the main game time is advanced.

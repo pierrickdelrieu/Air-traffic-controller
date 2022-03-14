@@ -2,7 +2,8 @@ package AiTravelController.Option;
 
 import AiTravelController.Element.Plane;
 import AiTravelController.RunwayWaiting.RunwayController;
-import AiTravelController.RunwayWaiting.WaitingPlaneController;
+
+import java.util.Random;
 
 public class LetThemLandOpt extends Option{
 
@@ -15,8 +16,8 @@ public class LetThemLandOpt extends Option{
     }
 
     public void apply() {
-        Plane plane = WaitingPlaneController.getRandomPlane();
+        Random rand = new Random();
+        Plane plane = new Plane("AH1004", rand.nextInt(3, 5), rand.nextInt(100, 500), 7);
         plane.land();
-        plane.setRunwayTime(7);
     }
 }
