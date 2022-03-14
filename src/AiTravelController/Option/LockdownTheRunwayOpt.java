@@ -3,8 +3,6 @@ package AiTravelController.Option;
 import AiTravelController.Element.ObstacleType;
 import AiTravelController.RunwayWaiting.RunwayController;
 
-import java.util.Objects;
-
 public class LockdownTheRunwayOpt extends Option{
 
     public LockdownTheRunwayOpt() {
@@ -14,6 +12,6 @@ public class LockdownTheRunwayOpt extends Option{
     public boolean isValid() { return RunwayController.getInstance().getNbEmptyRunway() >= 1;}
 
     public void apply() {
-        Objects.requireNonNull(RunwayController.getInstance().getEmptyRunway()).block(ObstacleType.OTHER, 8);
+        RunwayController.getInstance().getNEmptyRandomRunway(1)[0].block(ObstacleType.OTHER, 8);
     }
 }

@@ -17,6 +17,6 @@ public class AllowLandingOpt extends Option{
 
     @Override
     public void apply() {
-        RunwayController.getInstance().getEmptyRunway().addElement(new Plane("H3R5", 0, 0, 3));
+        RunwayController.getInstance().getNEmptyRandomRunway(1)[0].addElement(new Plane("H3R5", 0, 0, 3));
     }
 }

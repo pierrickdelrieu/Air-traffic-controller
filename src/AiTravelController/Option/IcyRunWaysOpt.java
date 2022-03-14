@@ -13,6 +13,6 @@ public class IcyRunWaysOpt extends Option{
     }
 
     public void apply() {
-        RunwayController.addWaitingTimeToPlanesOnRunways(2);
+        RunwayController.getInstance().addRunwayTimeToPlanes(2);
     }
 }

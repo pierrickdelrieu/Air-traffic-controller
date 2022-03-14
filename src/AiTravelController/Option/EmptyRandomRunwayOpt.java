@@ -10,11 +10,11 @@ public class EmptyRandomRunwayOpt extends Option{
 
     @Override
     public boolean isValid() {
-        return RunwayController.getInstance().getNbEmptyRunway() - RunwayController.getInstance().RUNWAY_NB == 0;
+        return RunwayController.getInstance().getNbEmptyRunway() - RunwayController.getInstance().getRunways().size() == 0;
     }
 
     @Override
     public void apply() {
-        RunwayController.getInstance().emptiesRandomRunway();
+        RunwayController.getInstance().emptiesNRandomRunway(1);
     }
 }

@@ -55,9 +55,8 @@ public class Plane extends Element {
      * @return true if the plane has been done and false otherwise
      */
     public boolean land() {
-        Runway runway = RunwayController.getInstance().getEmptyRunway();
-
-        if (runway != null) {
+        if (RunwayController.getInstance().getNbEmptyRunway() != 0) {
+            Runway runway = RunwayController.getInstance().getNEmptyRandomRunway(1)[0];
             WaitingPlaneController.removePlane(this);
             runway.addElement(this);
             return true;

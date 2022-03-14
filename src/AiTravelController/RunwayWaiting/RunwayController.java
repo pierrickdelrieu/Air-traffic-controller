@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class RunwayController {
     private RunwayController(){
-        for (int i = 0; i < runways.length; i++) {
-            runways[i] = new Runway();
+        for (int i = 0; i < INIT_RUNWAY_NB; i++) {
+            runways.add(new Runway());
         }
     }
 
@@ -22,11 +22,11 @@ public class RunwayController {
         return instance;
     }
 
-    public final int RUNWAY_NB = 8;
+    public final int INIT_RUNWAY_NB = 8;
 
-    private final Runway[] runways = new Runway[RUNWAY_NB];
+    private final ArrayList<Runway> runways = new ArrayList<>();
 
-    public Runway[] getRunways() {
+    public ArrayList<Runway> getRunways() {
         return runways;
     }
 
@@ -58,17 +58,17 @@ public class RunwayController {
             int index;
             do {
                 index = rand.nextInt(number);
-            } while (!runways[index].isEmpty() && !runwayIndex.contains(index));
+            } while (!runways.get(index).isEmpty() && !runwayIndex.contains(index));
 
             runwayIndex.add(index);
         }
 
         for (Integer index: runwayIndex) {
-            x[index] = runways[runwayIndex.get(index)];
+            x[index] = runways.get(runwayIndex.get(index));
         }
 
 
-        return runways;
+        return x;
     }
 
     /**
@@ -89,47 +89,42 @@ public class RunwayController {
             int index;
             do {
                 index = rand.nextInt(number);
-            } while (runways[index].isEmpty() && !runwayIndex.contains(index));
+            } while (runways.get(index).isEmpty() && !runwayIndex.contains(index));
 
             runwayIndex.add(index);
         }
 
         for (Integer index: runwayIndex) {
-            x[index] = runways[runwayIndex.get(index)];
+            x[index] = runways.get(runwayIndex.get(index));
         }
 
 
-        return runways;
+        return x;
     }
 
-    /**
-     * Empty a random runway
-     */
-    public void emptiesRandomRunway() {
-        Random rand = new Random();
-        int nbRunway = rand.nextInt(7);
-
-        runways[nbRunway].empties();
-    }
+//    /**
+//     * Empty a random runway
+//     */
+//    public void emptiesRandomRunway() {
+//        Random rand = new Random();
+//        int nbRunway = rand.nextInt(7);
+//
+//        runways[nbRunway].empties();
+//    }
 
     /**
      * Check of whether there is a runway in the system
      * @return true if there is a runway in the system and false otherwise
      */
     public boolean hasRunway() {
-        for (Runway runway: runways) {
-            if (runway != null) {
-                return true;
-            }
-        }
-        return false;
+        return runways.size() != 0;
     }
 
     /**
      * Getter of all empty runways
      * @return Array of all empty runways
      */
-    public ArrayList<Runway> getEmptyRunways() {
+    public ArrayList<Runway> getAllEmptyRunways() {
         ArrayList<Runway> emptyRunway = new ArrayList<>();
 
         for (Runway runway: runways) {
@@ -141,19 +136,19 @@ public class RunwayController {
     }
 
 
-    /**
-     * Getter of one empty runway
-     * @return Empty runway
-     */
-    public Runway getEmptyRunway() {
-        ArrayList<Runway> x = getEmptyRunways();
-
-        if (x.size() != 0) {
-            return x.get(0);
-        }
-
-        return null;
-    }
+//    /**
+//     * Getter of one empty runway
+//     * @return Empty runway
+//     */
+//    public Runway getEmptyRunway() {
+//        ArrayList<Runway> x = getEmptyRunways();
+//
+//        if (x.size() != 0) {
+//            return x.get(0);
+//        }
+//
+//        return null;
+//    }
 
     /**
      * Check if there is at least ${number} empty runway
@@ -176,7 +171,7 @@ public class RunwayController {
      * @param number int number of tracks to be emptied
      */
     public void emptiesNRandomRunway(int number) {
-        if (number > (RUNWAY_NB - getNbEmptyRunway())) {
+        if (number > (INIT_RUNWAY_NB - getNbEmptyRunway())) {
             Runway[] ways = getNFullRandomRunway(number);
 
             for (Runway way: ways) {
@@ -184,17 +179,21 @@ public class RunwayController {
             }
 
         } else {
-            for (Runway runway: getEmptyRunways()) {
+            for (Runway runway: getAllEmptyRunways()) {
                 runway.empties();
             }
         }
     }
 
-    public static void addWaitingTimeToPlanesOnRunways(int time){
-        for (Runway runway : instance.getRunways()) {
-            Element element = runway.getElement();
-            int total_time = element.getRunwayTime() + time;
-            if (element.equals(Plane.class)) element.setRunwayTime(total_time);
+    /**
+     *
+     * @param time
+     */
+    public void addRunwayTimeToPlanes(int time){
+        for (Runway runway : getRunways()) {
+            if (runway.getElement().getClass().getName().equals("AirTravelController.Element.Plane")) {
+                runway.getElement().increaseRunwayTime(time);
+            }
         }
     }
 }
