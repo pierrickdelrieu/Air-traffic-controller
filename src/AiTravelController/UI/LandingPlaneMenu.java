@@ -33,7 +33,7 @@ public class LandingPlaneMenu extends Menu {
     @Override
     public void displayBoard() {
         for (Runway runway: RunwayController.getInstance().getRunways()) {
-            System.out.println(runway);
+            System.out.println("             " + runway);
         }
     }
 

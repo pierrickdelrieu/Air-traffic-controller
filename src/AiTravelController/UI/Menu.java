@@ -90,11 +90,11 @@ public abstract class Menu {
      */
     public OptionMenu optionsSelection(ArrayList<OptionMenu> content) {
 
-        System.out.println("                     ** Select an option **");
+        System.out.println("\n                     ** Select an option **\n");
 
         displayOption(content);
 
-        System.out.print("Option : ");
+        System.out.print("\nOption : ");
 
         int select = insertNumber(1, content.size());
         if(select != -1) {

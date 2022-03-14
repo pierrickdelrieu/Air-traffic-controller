@@ -1,5 +1,6 @@
 package AiTravelController.Option;
 
+import AiTravelController.Element.Plane;
 import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 
@@ -16,6 +17,6 @@ public class AllowLandingOpt extends Option{
 
     @Override
     public void apply() {
-        WaitingPlaneController.getRandomPlane().land();
+        RunwayController.getInstance().getEmptyRunway().addElement(new Plane("H3R5", 0, 0, 3));
     }
 }

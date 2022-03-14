@@ -9,6 +9,7 @@ import AiTravelController.Request.Request;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class RequestMenu extends Menu {
@@ -43,6 +44,7 @@ public class RequestMenu extends Menu {
         System.out.println("                     ** Select an option **\n\n");
 
         // Displaying the options
+        HashMap<Integer, Option> cpt = new HashMap<>();
         int cptTotOption = 1;
         for (Request request: AirTravelController.getInstance().getCurrentRequest()) {
             System.out.println(request);
@@ -50,6 +52,7 @@ public class RequestMenu extends Menu {
             for (Option option: request.getOptions()) {
                 if (option.isValid()) {
                     System.out.println("** Option : " + cptTotOption + "  -  " + option);
+                    cpt.put(cptTotOption, option);
                     cptTotOption++;
                 } else {
                     System.out.println("** Option : unavailable  -  " + option);
@@ -74,29 +77,9 @@ public class RequestMenu extends Menu {
             return null;
         } else {
             if (select != cptTotOption) {
-                // Application of option consequences
-                int cptRequest = -1;
-                int cptOption = 0;
-                for (Request request: AirTravelController.getInstance().getCurrentRequest()) {
-                    cptOption = -1;
-                    cptRequest ++;
+                cpt.get(select).apply();
 
-                    // Recovery of the option
-                    for (Option option: request.getOptions()) {
-                        if (option.isValid()) {
-                            cptOption++;
-                            cptTotOption++;
-                        }
-                        if (cptOption == cptTotOption-1) {
-                            break;
-                        }
-                    }
-                    if (cptOption == cptTotOption-1) {
-                        break;
-                    }
-                }
-
-                AirTravelController.getInstance().getCurrentRequest()[cptRequest].getOptions().get(cptOption).apply();
+//                AirTravelController.getInstance().getCurrentRequest()[cptRequest].getOptions().get(cptOption).apply();
 
                 // Clear current request
                 AirTravelController.getInstance().clearCurrentRequest();
