@@ -24,6 +24,15 @@ public abstract class Element {
         this.runwayTime = runwayTime;
     }
 
+    public void increaseRunwayTime(int runwayTime) {
+        this.runwayTime += runwayTime;
+    }
+
+    public void decreaseRunwayTime(int runwayTime) {
+        this.runwayTime -= runwayTime;
+    }
+
+
     public String toString(MenuType landed) {
         return "";
     }
