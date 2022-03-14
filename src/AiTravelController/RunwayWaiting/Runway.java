@@ -21,10 +21,7 @@ public class Runway {
      * @return true if runway is empty and false otherwise
      */
     public boolean isEmpty() {
-        if (element == null) {
-            return true;
-        }
-        return false;
+        return element == null;
     }
 
     /**
@@ -69,5 +66,4 @@ public class Runway {
         return "---------------------------------------";
     }
 
-    public Element getElements(){ return element; }
 }
