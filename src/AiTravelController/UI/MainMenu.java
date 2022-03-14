@@ -27,6 +27,8 @@ public class MainMenu extends Menu {
         } else {
             addOptions(new OptionMenu("Go to Request Menu", OptionType.REQUEST_MENU));
         }
+        addOptions(new OptionMenu("Go to About Menu", OptionType.ABOUT_MENU));
+
 
         addOptions(new OptionMenu("Leave the game", OptionType.QUIT));
     }
