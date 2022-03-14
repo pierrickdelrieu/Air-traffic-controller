@@ -1,7 +1,11 @@
 package AiTravelController;
 
+import AiTravelController.Element.Plane;
 import AiTravelController.Request.Request;
+import AiTravelController.RunwayWaiting.WaitingPlaneController;
 import AiTravelController.UI.*;
+
+import java.util.ArrayList;
 
 
 public class AirTravelController {
@@ -12,7 +16,7 @@ public class AirTravelController {
 
     private int numberDied = 0;
     private int numberHour = 0;
-    private Request[] currentRequest = null;
+    private ArrayList<Request> currentRequest = new ArrayList<>();
 
 
     public static AirTravelController getInstance(){
@@ -27,15 +31,15 @@ public class AirTravelController {
      * Update of the current round requests
      * @param newRequests Array of new request
      */
-    public void changeCurrentRequest(Request[] newRequests) {
-        currentRequest = newRequests;
+    public void addCurrentRequest(ArrayList<Request> newRequests) {
+        currentRequest.addAll(newRequests);
     }
 
     /**
      * Getter of currents requests
      * @return Array of current request
      */
-    public Request[] getCurrentRequest() {
+    public ArrayList<Request> getCurrentRequest() {
         return currentRequest;
     }
 
@@ -43,7 +47,9 @@ public class AirTravelController {
      * Deleting current requests
      * A request has been selected. The tour has no more current requests.
      */
-    public void clearCurrentRequest() { currentRequest = null; }
+    public void clearRequest(Request request) {
+        currentRequest.remove(request);
+    }
 
     /**
      * Initialization of the game start data.

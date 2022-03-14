@@ -44,7 +44,9 @@ public class RequestMenu extends Menu {
         System.out.println("                     ** Select an option **\n\n");
 
         // Displaying the options
-        HashMap<Integer, Option> cpt = new HashMap<>();
+        HashMap<Integer, Option> options = new HashMap<>();
+        HashMap<Integer, Request> requests = new HashMap<>();
+
         int cptTotOption = 1;
         for (Request request: AirTravelController.getInstance().getCurrentRequest()) {
             System.out.println(request);
@@ -52,7 +54,8 @@ public class RequestMenu extends Menu {
             for (Option option: request.getOptions()) {
                 if (option.isValid()) {
                     System.out.println("** Option : " + cptTotOption + "  -  " + option);
-                    cpt.put(cptTotOption, option);
+                    options.put(cptTotOption, option);
+                    requests.put(cptTotOption, request);
                     cptTotOption++;
                 } else {
                     System.out.println("** Option : unavailable  -  " + option);
@@ -77,12 +80,10 @@ public class RequestMenu extends Menu {
             return null;
         } else {
             if (select != cptTotOption) {
-                cpt.get(select).apply();
-
-//                AirTravelController.getInstance().getCurrentRequest()[cptRequest].getOptions().get(cptOption).apply();
+                options.get(select).apply();
 
                 // Clear current request
-                AirTravelController.getInstance().clearCurrentRequest();
+                AirTravelController.getInstance().clearRequest(requests.get(select));
             }
 
             return goToMainMenu; // redirection
