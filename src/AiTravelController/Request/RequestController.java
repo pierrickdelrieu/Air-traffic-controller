@@ -80,9 +80,9 @@ public class RequestController {
      * @param number number of pick requests
      * @return an array with the selected requests
      */
-    public Request[] chooseRandomRequest(int number) {
+    public ArrayList<Request> chooseRandomRequest(int number) {
 
-        Request[] chosenRequests = new Request[number];
+        ArrayList<Request> chosenRequests = new ArrayList<>();
 
         int nbRequests = requests.size();
 
@@ -99,7 +99,7 @@ public class RequestController {
 
                 //System.out.println("min : " + min + " max : " + max);
                 if( (min <= nbRand) && (nbRand < max ) ){
-                    chosenRequests[i] = requests.get(j);
+                    chosenRequests.add(requests.get(j));
                 }
 
                 if(j < nbRequests - 1) {
