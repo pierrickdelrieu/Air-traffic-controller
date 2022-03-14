@@ -1,21 +1,21 @@
 package AiTravelController.UI;
 
 
+import AiTravelController.AirTravelController;
 import AiTravelController.Element.ObstacleType;
 import AiTravelController.Element.Plane;
 import AiTravelController.Element.PlaneType;
+import AiTravelController.Option.Option;
+import AiTravelController.Request.Request;
 import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class WaitingPlaneMenu extends Menu {
 
     private WaitingPlaneMenu(){}
-
-    @Override
-    public void setOptions() {
-        clearOption();
-        addOptions(new OptionMenu("Go to Main Menu", OptionType.MAIN_MENU));
-    }
 
     private static WaitingPlaneMenu instance = null;
 
@@ -23,7 +23,6 @@ public class WaitingPlaneMenu extends Menu {
         if (instance == null) {
             instance = new WaitingPlaneMenu();
         }
-        instance.setOptions();
         return instance;
     }
 
@@ -33,24 +32,55 @@ public class WaitingPlaneMenu extends Menu {
         System.out.println("                     -- Waiting Plane Menu --                    \n");
     }
 
+
     @Override
-    public void displayBoard() {
-        if (WaitingPlaneController.getPlane().size() == 0) {
-            System.out.println("No waiting plane");
+    public OptionMenu optionsSelection(ArrayList<OptionMenu> content) {
+        int cptTotOption = 1;
+        HashMap<Integer, Plane> cpt = new HashMap<>();
+
+
+        // Displaying the options
+        if (RunwayController.getInstance().getNbEmptyRunway() != 0) {
+            if (WaitingPlaneController.getPlane().size() == 0) {
+                System.out.println("No waiting plane");
+            } else {
+                System.out.println("                     ** Choose the plane you want to land **");
+
+                for (Plane plane : WaitingPlaneController.getPlane()) {
+                    System.out.println("** PLANE: " + cptTotOption + '\n' + plane.toString(MenuType.WAITING));
+                    cpt.put(cptTotOption, plane);
+                    cptTotOption++;
+                }
+            }
         } else {
-            System.out.println("                          ** PLANES **");
             for (Plane plane : WaitingPlaneController.getPlane()) {
-                System.out.println(plane.toString(MenuType.WAITING));
+                System.out.println("** " + plane.toString(MenuType.WAITING));
             }
         }
-        System.out.print("\n\n");
-    }
 
-    @Override
-    public void content() {
-//        WaitingPlaneController.addPlane(new Plane("H234", 4, 200, 5));
-//        WaitingPlaneController.addPlane(new Plane("H234", 4, 200, 5));
-        displayBoard();
-    }
 
+        OptionMenu goToMainMenu = new OptionMenu("Go to Main Menu", OptionType.MAIN_MENU);
+        System.out.println("\n** Option : " + cptTotOption + "  -  " + goToMainMenu.getContent());
+
+
+        // Selection of an option
+        System.out.print("\n\nChoose an Option : ");
+        int select = insertNumber(1, cptTotOption);
+
+
+
+        if(select == -1) {
+            return null;
+        } else {
+            if (select != cptTotOption) {
+                cpt.get(select).land();
+            }
+
+            return goToMainMenu; // redirection
+        }
+
+
+
+
+    }
 }
