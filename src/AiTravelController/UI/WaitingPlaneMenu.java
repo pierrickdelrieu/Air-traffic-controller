@@ -44,7 +44,7 @@ public class WaitingPlaneMenu extends Menu {
             if (WaitingPlaneController.getPlane().size() == 0) {
                 System.out.println("No waiting plane");
             } else {
-                System.out.println("                     ** Choose the plane you want to land **");
+                System.out.println("          ** Choose the plane you want to land **");
 
                 for (Plane plane : WaitingPlaneController.getPlane()) {
                     System.out.println("** PLANE: " + cptTotOption + '\n' + plane.toString(MenuType.WAITING));
@@ -53,6 +53,7 @@ public class WaitingPlaneMenu extends Menu {
                 }
             }
         } else {
+            System.out.println("All runways are occupied. You can't land a plane.");
             for (Plane plane : WaitingPlaneController.getPlane()) {
                 System.out.println("** " + plane.toString(MenuType.WAITING));
             }
