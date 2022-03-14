@@ -56,6 +56,7 @@ public class WaitingPlaneController {
      */
     public static void removeFuelForAllPlane(int hour){
         planes.forEach((plane) -> plane.setHourOfFuel(plane.getHourOfFuel() - hour));
+        planes.removeIf(each -> each.getHourOfFuel() <= 0);
     }
 
     /**
