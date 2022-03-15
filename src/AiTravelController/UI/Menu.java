@@ -67,6 +67,7 @@ public abstract class Menu {
      * and the value entered by the user otherwise
      */
     public int insertNumber(int min, int max) {
+
         Scanner keyboard = new Scanner(System.in);
         int select = -1;
 

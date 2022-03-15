@@ -1,8 +1,10 @@
 package AiTravelController.UI;
 
 import AiTravelController.AirTravelController;
+import AiTravelController.Element.Plane;
 import AiTravelController.Request.RequestController;
 import AiTravelController.RunwayWaiting.RunwayController;
+import AiTravelController.RunwayWaiting.WaitingPlaneController;
 
 import java.util.Random;
 
@@ -40,7 +42,11 @@ public class AdvanceHourMenu extends Menu {
 
             AirTravelController.getInstance().addCurrentRequest(RequestController.getInstance().chooseRandomRequest(nbRequest));
             System.out.println("Number of new requests coming in : " + nbRequest);
+
+
             RunwayController.getInstance().reduceBlockingTimeOfElementsOnRunways(1);
+            WaitingPlaneController.removeFuelForAllPlane(1);
+
         }
     }
 }

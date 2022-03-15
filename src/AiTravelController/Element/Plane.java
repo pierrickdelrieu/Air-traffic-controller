@@ -5,6 +5,8 @@ import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 import AiTravelController.UI.MenuType;
 
+import java.util.Random;
+
 
 public class Plane extends Element {
 
@@ -21,6 +23,15 @@ public class Plane extends Element {
         this.nbPassenger = nbPassenger;
     }
 
+    public Plane(Integer[] hourOfFuel, Integer[] nbPassenger, Integer[] time) {
+        super(time);
+        Random rand = new Random();
+        this.hourOfFuel = rand.nextInt((hourOfFuel[1] - hourOfFuel[0]) + 1) + hourOfFuel[0];
+        this.nbPassenger = rand.nextInt((nbPassenger[1] - nbPassenger[0]) + 1) + nbPassenger[0];
+        this.name = "PL" + rand.nextInt(10) + this.hourOfFuel + rand.nextInt(10) + getRunwayTime();
+
+    }
+
     /**
      * @return int hour of fuel of the plane
      */
@@ -30,11 +41,19 @@ public class Plane extends Element {
 
     /**
      * Setter of hour of fuel of the plane
-     * @param hour_of_fuel int new value of hour of fuel
+     * @param hour int new value of hour of fuel
      */
-    public void setHourOfFuel(int hour_of_fuel) {
-        this.hourOfFuel = hour_of_fuel;
+    public void setHourOfFuel(int hour) {
+        this.hourOfFuel = hour;
     }
+
+    public void increaseHourOfFuel(int hour) {
+        this.hourOfFuel += hour;
+    }
+    public void decreaseHourOfFuel(int hour) {
+        this.hourOfFuel -= hour;
+    }
+
 
     /**
      * @return in number of passages on board the plane

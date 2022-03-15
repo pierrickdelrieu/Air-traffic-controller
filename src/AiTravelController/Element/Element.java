@@ -2,11 +2,18 @@ package AiTravelController.Element;
 
 import AiTravelController.UI.MenuType;
 
+import java.util.Random;
+
 public abstract class Element {
     private int runwayTime;
 
     public Element(int runwayTime) {
         this.runwayTime = runwayTime;
+    }
+
+    public Element(Integer[] runwayTime) {
+        Random rand = new Random();
+        this.runwayTime = rand.nextInt((runwayTime[1] - runwayTime[0]) + 1) + runwayTime[0];
     }
 
     /**

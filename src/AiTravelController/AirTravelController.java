@@ -64,6 +64,10 @@ public class AirTravelController {
     public int getNumberDied() {
         return numberDied;
     }
+    public void increaseNumberDied(int number) { this.numberDied += number;}
+    public void decreaseNumberDied(int number) { this.numberDied -= number;}
+
+
 
 
     /**

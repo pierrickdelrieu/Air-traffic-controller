@@ -64,10 +64,10 @@ public class Runway {
             if (element.getClass().getName().equals("AiTravelController.Element.Plane")) {
                 return "----------  " + element.toString(MenuType.LANDING) + "  ----------";
             } else {
-                return "----------  " + element + "  ----------";
+                return "-----------  " + element + "  -----------";
             }
         }
-        return "---------------------------------------";
+        return "-----------------------------------------";
     }
 
 }

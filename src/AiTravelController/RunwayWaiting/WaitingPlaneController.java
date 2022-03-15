@@ -1,5 +1,6 @@
 package AiTravelController.RunwayWaiting;
 
+import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,7 +8,7 @@ import java.util.Random;
 public class WaitingPlaneController {
     private static ArrayList<Plane> planes = new ArrayList<>();
 
-    public static ArrayList<Plane> getPlane() {
+    public static ArrayList<Plane> getPlanes() {
         return planes;
     }
 
@@ -55,7 +56,12 @@ public class WaitingPlaneController {
      * @param hour
      */
     public static void removeFuelForAllPlane(int hour){
-        planes.forEach((plane) -> plane.setHourOfFuel(plane.getHourOfFuel() - hour));
+        planes.forEach((plane) -> {
+            plane.decreaseHourOfFuel(hour);
+            if (plane.getHourOfFuel() <= 0) {
+                AirTravelController.getInstance().increaseNumberDied(plane.getNbPassenger());
+            }
+        });
         planes.removeIf(each -> each.getHourOfFuel() <= 0);
     }
 
