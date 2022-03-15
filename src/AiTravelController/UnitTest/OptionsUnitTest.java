@@ -7,6 +7,7 @@ import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -150,6 +151,19 @@ public class OptionsUnitTest {
 
 
     public static boolean LetThemLandTest(){
+        AirTravelController.getInstance();
+        LetThemLandOpt option = new LetThemLandOpt();
+
+        if(!option.isValid()) return false; //at least 1 empty runway
+
+        option.apply();
+
+        if (RunwayController.getInstance().getNbEmptyRunway() != 7) return false; //7 empty runways should be free
+
+        for (Runway runway: RunwayController.getInstance().getRunways()) { //loop to find the landed plane
+            if (runway.getElement() != null && runway.getElement().getRunwayTime() != 7) //runwayTime should be set at 7
+                return false;
+        }
         return true;
     }
 
