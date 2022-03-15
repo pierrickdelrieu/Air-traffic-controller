@@ -26,14 +26,14 @@ public class RequestController {
                                         "minHourOfRunway", 1,
                                         "maxHourOfRunway", 4,
                                         "minNbPassenger", 100,
-                                        "maxNbPassenger", 400))),
+                                        "maxNbPassenger", 500))),
                         new PlaceOnStandbyOpt(new HashMap<>(
-                                Map.of("minHourOfFuel", 1,
-                                        "maxHourOfFuel", 1,
+                                Map.of("minHourOfFuel", 3,
+                                        "maxHourOfFuel", 5,
                                         "minHourOfRunway", 1,
                                         "maxHourOfRunway", 4,
                                         "minNbPassenger", 100,
-                                        "maxNbPassenger", 400))))));
+                                        "maxNbPassenger", 500))))));
         requests.add(planeLanding);
 
 //        Request emergencyLanding = new Request(5.0, "Emergency Landing",

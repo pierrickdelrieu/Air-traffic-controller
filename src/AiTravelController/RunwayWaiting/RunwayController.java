@@ -4,6 +4,7 @@ import AiTravelController.Element.Element;
 import AiTravelController.Element.Plane;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class RunwayController {
@@ -46,29 +47,28 @@ public class RunwayController {
      * @return Array of empty runway
      */
     public Runway[] getNEmptyRandomRunway(int number) {
-        Runway[] x = new Runway[number];
+        if (getNbEmptyRunway() != 0) {
+            Runway[] x = new Runway[number];
 
-        Random rand = new Random();
+            Random rand = new Random();
 
-        int nb = 1 + rand.nextInt(number);
+            ArrayList<Integer> runwayIndex = new ArrayList<Integer>();
+            for (int i = 0; i < number; i++) {
+                int index;
+                do {
+                    index = rand.nextInt(runways.size());
+                } while (!runways.get(index).isEmpty() || runwayIndex.contains(index));
 
-        ArrayList<Integer> runwayIndex = new ArrayList<Integer>();
+                runwayIndex.add(index);
+            }
 
-        for(int i = 0; i < nb; i++) {
-            int index;
-            do {
-                index = rand.nextInt(number);
-            } while (!runways.get(index).isEmpty() && !runwayIndex.contains(index));
+            for (int i = 0; i<number; i++) {
+                x[i] = runways.get(runwayIndex.get(i));
+            }
 
-            runwayIndex.add(index);
+            return x;
         }
-
-        for (Integer index: runwayIndex) {
-            x[index] = runways.get(runwayIndex.get(index));
-        }
-
-
-        return x;
+        return null;
     }
 
     /**
@@ -77,29 +77,28 @@ public class RunwayController {
      * @return Array of full runway
      */
     public Runway[] getNFullRandomRunway(int number) {
-        Runway[] x = new Runway[number];
+        if (this.runways.size() - getNbEmptyRunway() != 0) {
+            Runway[] x = new Runway[number];
 
-        Random rand = new Random();
+            Random rand = new Random();
 
-        int nb = 1 + rand.nextInt(number);
+            ArrayList<Integer> runwayIndex = new ArrayList<Integer>();
+            for (int i = 0; i < number; i++) {
+                int index;
+                do {
+                    index = rand.nextInt(number);
+                } while (runways.get(index).isEmpty() || runwayIndex.contains(index));
 
-        ArrayList<Integer> runwayIndex = new ArrayList<Integer>();
+                runwayIndex.add(index);
+            }
 
-        for(int i = 0; i < nb; i++) {
-            int index;
-            do {
-                index = rand.nextInt(number);
-            } while (runways.get(index).isEmpty() && !runwayIndex.contains(index));
+            for (Integer index: runwayIndex) {
+                x[index] = runways.get(runwayIndex.get(index));
+            }
 
-            runwayIndex.add(index);
+            return x;
         }
-
-        for (Integer index: runwayIndex) {
-            x[index] = runways.get(runwayIndex.get(index));
-        }
-
-
-        return x;
+        return null;
     }
 
 //    /**

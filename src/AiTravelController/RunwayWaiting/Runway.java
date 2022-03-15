@@ -28,14 +28,14 @@ public class Runway {
      * @return true if runway is empty and false otherwise
      */
     public boolean isEmpty() {
-        return element == null;
+        return this.element == null;
     }
 
     /**
      * Empty the runway
      */
     public void empties() {
-        element = null;
+        this.element = null;
     }
 
     /**
