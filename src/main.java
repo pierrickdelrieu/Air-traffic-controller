@@ -4,6 +4,9 @@ public class main {
     public static void main(String[] args) {
 //        AiTravelController.AirTravelController.getInstance().run();
 
-        System.out.println(OptionsUnitTest.AllowLandingTest());
+        // Options test
+//        System.out.println(OptionsUnitTest.AllowLandingTest());
+        System.out.println(OptionsUnitTest.PlaceOnStanbyTest());
+
     }
 }

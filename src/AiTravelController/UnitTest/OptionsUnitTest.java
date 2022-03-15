@@ -3,8 +3,11 @@ package AiTravelController.UnitTest;
 import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
 import AiTravelController.Option.AllowLandingOpt;
+import AiTravelController.Option.PlaceOnStandbyOpt;
 import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
+import AiTravelController.RunwayWaiting.WaitingPlaneController;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +67,32 @@ public class OptionsUnitTest {
         }
         option.apply();
         if (RunwayController.getInstance().getNbEmptyRunway() != 7) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public static boolean PlaceOnStanbyTest() {
+        PlaceOnStandbyOpt option = new PlaceOnStandbyOpt(new HashMap<>(
+                Map.of("minHourOfFuel", 3,
+                        "maxHourOfFuel", 5,
+                        "minHourOfRunway", 1,
+                        "maxHourOfRunway", 4,
+                        "minNbPassenger", 100,
+                        "maxNbPassenger", 500)));
+
+        AirTravelController.getInstance();
+
+
+        // ********** Apply Test **********
+        // Apply
+        if (WaitingPlaneController.hasWaitingPlane()) {
+            return false;
+        }
+        option.apply();
+        if (!WaitingPlaneController.hasWaitingPlane()) {
             return false;
         }
 
