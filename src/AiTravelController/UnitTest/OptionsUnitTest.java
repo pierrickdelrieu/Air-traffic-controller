@@ -169,6 +169,19 @@ public class OptionsUnitTest {
 
 
     public static boolean LockdownTheRunwayTest(){
+        AirTravelController.getInstance();
+        LockdownTheRunwayOpt option = new LockdownTheRunwayOpt();
+
+        if(!option.isValid()) return false;
+
+        option.apply();
+
+        if(RunwayController.getInstance().getNbEmptyRunway() != 7) return false;
+
+        for (Runway runway: RunwayController.getInstance().getRunways()){
+            if(runway.getElement() != null && runway.getElement().getRunwayTime() != 8) return false;
+        }
+
         return true;
     }
 
