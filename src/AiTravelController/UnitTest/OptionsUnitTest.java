@@ -3,6 +3,7 @@ package AiTravelController.UnitTest;
 import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
 import AiTravelController.Option.AllowLandingOpt;
+import AiTravelController.Option.IceStormOpt;
 import AiTravelController.Option.PlaceOnStandbyOpt;
 import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
@@ -96,6 +97,45 @@ public class OptionsUnitTest {
             return false;
         }
 
+        return true;
+    }
+
+    public static boolean IceStormTest(){
+        AirTravelController.getInstance();
+        IceStormOpt option = new IceStormOpt();
+
+        if(!option.isValid()) return false; //the 8 runways are empty sor isValid() must be true
+
+        option.apply(); // removing an empty runway
+
+        int count = 0;
+        for (Runway runway: RunwayController.getInstance().getAllEmptyRunways()) {
+            runway.addElement(new Plane("Plane Test", 3,3,3));
+            count++;
+        }
+
+        if (count != 7) return false; //7 runways should be used by the added planes
+
+        return true;
+    }
+
+    public static boolean IcyRunwaysTest(){
+        return true;
+    }
+
+    public static boolean LetTheManGoTest(){
+        return true;
+    }
+
+    public static boolean LetThemLandTest(){
+        return true;
+    }
+
+    public static boolean LockdownTheRunwayTest(){
+        return true;
+    }
+
+    public static boolean IceStormOpt(){
         return true;
     }
 }

@@ -1,10 +1,6 @@
 package AiTravelController.RunwayWaiting;
 
-import AiTravelController.Element.Element;
-import AiTravelController.Element.Plane;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class RunwayController {
@@ -29,6 +25,10 @@ public class RunwayController {
 
     public ArrayList<Runway> getRunways() {
         return runways;
+    }
+
+    public void removeRunway(Runway runway){
+        runways.remove(runway);
     }
 
 

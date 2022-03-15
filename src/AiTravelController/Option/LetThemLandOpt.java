@@ -2,13 +2,14 @@ package AiTravelController.Option;
 
 import AiTravelController.Element.Plane;
 import AiTravelController.RunwayWaiting.RunwayController;
+import java.util.HashMap;
 
 import java.util.Random;
 
 public class LetThemLandOpt extends Option{
 
-    public LetThemLandOpt() {
-        super("Let them land", "Free Runway", "Plane will occupy runway for 7 hours");
+    public LetThemLandOpt(HashMap<String, Integer> params) {
+        super("Let them land", "Free Runway", "Plane will occupy runway for 7 hours", params);
     }
 
     public boolean isValid() {
