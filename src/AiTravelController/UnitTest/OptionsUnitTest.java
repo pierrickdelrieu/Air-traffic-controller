@@ -2,10 +2,7 @@ package AiTravelController.UnitTest;
 
 import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
-import AiTravelController.Option.AllowLandingOpt;
-import AiTravelController.Option.IceStormOpt;
-import AiTravelController.Option.IcyRunWaysOpt;
-import AiTravelController.Option.PlaceOnStandbyOpt;
+import AiTravelController.Option.*;
 import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
@@ -134,19 +131,31 @@ public class OptionsUnitTest {
         return runway[0].getElement().getRunwayTime() == 3;
     }
 
+
     public static boolean LetTheManGoTest(){
+        AirTravelController.getInstance();
+        LetTheManGoOpt option = new LetTheManGoOpt();
+
+        if (!option.isValid()) return false; // no requirements so isValid must return true
+
+        WaitingPlaneController.addPlane(new Plane("test Plane",2,100,0));
+
+        option.apply(); //removing a random waiting plane and killing 100 passengers
+
+        if (AirTravelController.getInstance().getNumberDied() != 100 || WaitingPlaneController.hasWaitingPlane() )
+            return false;
+
         return true;
     }
+
 
     public static boolean LetThemLandTest(){
         return true;
     }
 
+
     public static boolean LockdownTheRunwayTest(){
         return true;
     }
 
-    public static boolean IceStormOpt(){
-        return true;
-    }
 }
