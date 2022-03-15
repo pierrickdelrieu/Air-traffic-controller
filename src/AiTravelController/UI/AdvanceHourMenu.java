@@ -42,11 +42,6 @@ public class AdvanceHourMenu extends Menu {
 
             AirTravelController.getInstance().addCurrentRequest(RequestController.getInstance().chooseRandomRequest(nbRequest));
             System.out.println("Number of new requests coming in : " + nbRequest);
-
-
-            RunwayController.getInstance().reduceBlockingTimeOfElementsOnRunways(1);
-            WaitingPlaneController.removeFuelForAllPlane(1);
-
         }
     }
 }

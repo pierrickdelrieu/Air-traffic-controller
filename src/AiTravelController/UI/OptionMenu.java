@@ -1,6 +1,8 @@
 package AiTravelController.UI;
 
 import AiTravelController.AirTravelController;
+import AiTravelController.RunwayWaiting.RunwayController;
+import AiTravelController.RunwayWaiting.WaitingPlaneController;
 
 
 public class OptionMenu {
@@ -33,6 +35,8 @@ public class OptionMenu {
             case QUIT -> {System.exit(0);}
             case ADVANCE_HOUR_MENU -> {
                 AirTravelController.getInstance().setNumberHour(AirTravelController.getInstance().getNumberHour() + 1);
+                RunwayController.getInstance().reduceBlockingTimeOfElementsOnRunways(1);
+                WaitingPlaneController.removeFuelForAllPlane(1);
                 AdvanceHourMenu.getInstance().show();
             }
         }
