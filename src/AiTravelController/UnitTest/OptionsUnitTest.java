@@ -4,6 +4,7 @@ import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
 import AiTravelController.Option.AllowLandingOpt;
 import AiTravelController.Option.IceStormOpt;
+import AiTravelController.Option.IcyRunWaysOpt;
 import AiTravelController.Option.PlaceOnStandbyOpt;
 import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
@@ -100,6 +101,7 @@ public class OptionsUnitTest {
         return true;
     }
 
+
     public static boolean IceStormTest(){
         AirTravelController.getInstance();
         IceStormOpt option = new IceStormOpt();
@@ -114,13 +116,22 @@ public class OptionsUnitTest {
             count++;
         }
 
-        if (count != 7) return false; //7 runways should be used by the added planes
-
-        return true;
+        return count == 7; //7 runways should be used by the added planes
     }
 
+
     public static boolean IcyRunwaysTest(){
-        return true;
+        AirTravelController.getInstance();
+        IcyRunWaysOpt option = new IcyRunWaysOpt();
+
+        if (!option.isValid()) return false;
+
+        Runway[] runway = RunwayController.getInstance().getNEmptyRandomRunway(1); //getting an empty runway
+        runway[0].addElement(new Plane("Plane Test", 0,0,1)); //adding a plane in it
+
+        option.apply(); // adding 2 hours wait time to the plane
+
+        return runway[0].getElement().getRunwayTime() == 3;
     }
 
     public static boolean LetTheManGoTest(){

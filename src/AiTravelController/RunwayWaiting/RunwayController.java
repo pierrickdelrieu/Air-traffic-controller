@@ -1,6 +1,9 @@
 package AiTravelController.RunwayWaiting;
 
+import AiTravelController.Element.Element;
+
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class RunwayController {
@@ -189,10 +192,10 @@ public class RunwayController {
      * @param time
      */
     public void addRunwayTimeToPlanes(int time){
-        for (Runway runway : getRunways()) {
-            if (runway.getElement().getClass().getName().equals("AirTravelController.Element.Plane")) {
-                runway.getElement().increaseRunwayTime(time);
-            }
+        for (Runway runway : RunwayController.getInstance().getRunways()) {
+            Element element = runway.getElement();
+            if (element != null && element.getClass().getName().equals("AiTravelController.Element.Plane"))
+                element.increaseRunwayTime(time);
         }
     }
 }

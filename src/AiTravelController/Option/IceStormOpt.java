@@ -1,7 +1,6 @@
 package AiTravelController.Option;
 
 import AiTravelController.RunwayWaiting.RunwayController;
-import java.util.HashMap;
 
 public class IceStormOpt extends Option{
 

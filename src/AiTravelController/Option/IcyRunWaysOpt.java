@@ -1,12 +1,11 @@
 package AiTravelController.Option;
 
 import AiTravelController.RunwayWaiting.RunwayController;
-import java.util.HashMap;
 
 public class IcyRunWaysOpt extends Option{
 
-    public IcyRunWaysOpt(HashMap<String, Integer> params) {
-        super("Icy run ways", "None", "Add 2 hours wait time to all planes waiting in runway", params);
+    public IcyRunWaysOpt() {
+        super("Icy run ways", "None", "Add 2 hours wait time to all planes waiting in runway");
     }
 
     public boolean isValid() {
