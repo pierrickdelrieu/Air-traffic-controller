@@ -35,6 +35,79 @@ public class OptionsUnitTest {
 
      */
 
+    public static boolean MainOptionsUnitTest(){
+
+        System.out.println("Process all Options Unit Tests");
+
+        if( !AirRefuelingTest() ){
+            System.out.println("AirRefuelingTest is false");
+            return false;
+        }
+        if( !AllowLandingTest() ){
+            System.out.println("AllowLandingTest is false");
+            return false;
+        }
+        if( !CrossWindsTest() ){
+            System.out.println("CrossWindsTest is false");
+            return false;
+        }
+        if( !EmptyRandomRunwayTest() ){
+            System.out.println("EmptyRandomRunwayTest is false");
+            return false;
+        }
+        if( !GetPoliceInvolvedTest() ){
+            System.out.println("GetPoliceInvolvedTest is false");
+            return false;
+        }
+
+        if( !IceStormTest() ){
+            System.out.println("IceStormTest is false");
+            return false;
+        }
+        if( !IcyRunwaysTest() ){
+            System.out.println("IcyRunwaysTest is false");
+            return false;
+        }
+        if( !LetTheManGoTest() ){
+            System.out.println("LetTheManGoTest is false");
+            return false;
+        }
+        if( !LetThemLandTest() ){
+            System.out.println("LetThemLandTest is false");
+            return false;
+        }
+        if( !LockdownTheRunwayTest() ){
+            System.out.println("LockdownTheRunwayTest is false");
+            return false;
+        }
+
+        if( !PlaceOnStandbyTest() ){
+            System.out.println("PlaceOnStandbyTest is false");
+            return false;
+        }
+        if( !PlanesLandAnywaysTest() ){
+            System.out.println("PlanesLandAnywaysTest is false");
+            return false;
+        }
+        if( !RefuseThemTest() ){
+            System.out.println("RefuseThemTest is false");
+            return false;
+        }
+        if( !RescueTeamTest() ){
+            System.out.println("RescueTeamTest is false");
+            return false;
+        }
+        if( !SpaceToProtestTest() ){
+            System.out.println("SpaceToProtestTest is false");
+            return false;
+        }
+
+
+        System.out.println("All tests passed with success");
+        return true;
+
+    }
+
     public static boolean AirRefuelingTest(){
         AirTravelController.getInstance();
         AirRefuelingOpt option = new AirRefuelingOpt();
@@ -161,7 +234,7 @@ public class OptionsUnitTest {
         option.apply();
 
         if(WaitingPlaneController.getPlanes().size() != 2) {
-            System.out.println("Error in removing plane");
+            System.out.println("Error in removing plane from waiting list");
             return false;
         }
 
@@ -194,7 +267,7 @@ public class OptionsUnitTest {
             return false;
 
         //we fill in a runway
-        for (Runway each: RunwayController.getInstance().getNEmptyRandomRunway(1)) {
+        for (Runway each: RunwayController.getInstance().getNEmptyRandomRunway(2)) {
             each.addElement(new Plane("test", 2,2,2));
         }
 
@@ -204,12 +277,7 @@ public class OptionsUnitTest {
         if(!option.isValid())
             return false;
 
-        //we fill in a runway
-        for (Runway each: RunwayController.getInstance().getNEmptyRandomRunway(1)) {
-            each.addElement(new Plane("test2", 2,2,2));
-        }
-
-        LandingPlaneMenu.getInstance().displayBoard();
+        //LandingPlaneMenu.getInstance().displayBoard();
 
         //we have two full runways, so the option is valid
         if(!option.isValid())
@@ -217,14 +285,13 @@ public class OptionsUnitTest {
 
         // ********** Apply Test **********
 
+        int previousNumberOfEmptyRunways = RunwayController.getInstance().getNbEmptyRunway();
+
         option.apply();
 
-        LandingPlaneMenu.getInstance().displayBoard();
+        //LandingPlaneMenu.getInstance().displayBoard();
 
-        System.out.println(RunwayController.getInstance().getNbEmptyRunway());
-        System.out.println(RunwayController.getInstance().INIT_RUNWAY_NB - 1);
-
-        if(RunwayController.getInstance().getNbEmptyRunway() != RunwayController.getInstance().INIT_RUNWAY_NB - 1)
+        if(RunwayController.getInstance().getNbEmptyRunway() != previousNumberOfEmptyRunways - 1)
             return false;
 
 
