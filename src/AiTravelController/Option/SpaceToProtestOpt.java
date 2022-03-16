@@ -9,7 +9,7 @@ public class SpaceToProtestOpt extends Option {
 
     @Override
     public boolean isValid() {
-        return RunwayController.getInstance().hasRunway();
+        return RunwayController.getInstance().getNbEmptyRunway() >= 1;
     }
 
     @Override
