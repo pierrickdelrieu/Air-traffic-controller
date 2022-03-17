@@ -143,8 +143,6 @@ public class RequestController {
 //            }
 //        }
 
-//        System.out.println("******** Call choose random");
-//        PlaneRequest r = (PlaneRequest) requests.get(0).clone();
         chosenRequests.add(requests.get(0).clone());
 
         return chosenRequests;

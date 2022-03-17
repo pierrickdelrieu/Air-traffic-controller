@@ -43,9 +43,6 @@ public class AdvanceHourMenu extends Menu {
             Random rand = new Random();
             int nbRequest = 1 + rand.nextInt(3);
 
-//            ArrayList<Request> r = RequestController.getInstance().chooseRandomRequest(nbRequest);
-//            PlaneRequest r2 = (PlaneRequest) r.get(0);
-//            System.out.println("4 ---------- " + r2.getPlane().getHourOfFuel() + r2.getPlane().getRunwayTime() + r2.getPlane().getNbPassenger() + "---------- " );
             AirTravelController.getInstance().replaceCurrentRequest(RequestController.getInstance().chooseRandomRequest(nbRequest));
             System.out.println("Number of new requests coming in : " + nbRequest);
         }

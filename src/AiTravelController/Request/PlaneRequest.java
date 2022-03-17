@@ -30,11 +30,7 @@ public class PlaneRequest extends Request implements Cloneable {
         int nbPassengerParams = this.params.get("minNbPassenger") + rand.nextInt(this.params.get("maxNbPassenger") - this.params.get("minNbPassenger"));
         int runwayTimeParams = this.params.get("minRunwayTime") + rand.nextInt(this.params.get("maxRunwayTime") - this.params.get("minRunwayTime"));
 
-        System.out.println("************" + hourOfFuelParams + "  -  " + runwayTimeParams + "  -  " + nbPassengerParams);
-        System.out.println("--- " + getDescr());
         setDescr(String.format(getDescr(), hourOfFuelParams, runwayTimeParams, nbPassengerParams));
-        System.out.println("--- " + getDescr());
-
 
         this.plane = new Plane(hourOfFuelParams, nbPassengerParams, runwayTimeParams);
 

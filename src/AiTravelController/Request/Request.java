@@ -27,11 +27,6 @@ public class Request implements Cloneable {
         this.options = r.options;
     }
 
-//    @Override
-//    public Request clone() {
-//        return new Request(this.rarity, this.title, this.desc, this.options);
-//    }
-
 
 
     public boolean chooseOption(Option option) {

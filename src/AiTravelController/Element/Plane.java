@@ -21,18 +21,11 @@ public class Plane extends Element {
         Random rand = new Random();
         this.hourOfFuel = hourOfFuel;
         this.nbPassenger = nbPassenger;
-//        this.name = "PL" + rand.nextInt(10) + this.hourOfFuel + rand.nextInt(10) + getRunwayTime();
-        this.name = "PL" + this.hourOfFuel + getRunwayTime() + getNbPassenger();
+        this.name = "PL" + rand.nextInt(10) + this.hourOfFuel + rand.nextInt(10) + getRunwayTime();
+//        this.name = "PL" + this.hourOfFuel + getRunwayTime() + getNbPassenger();
 
     }
 
-//    public Plane(Integer[] hourOfFuel, Integer[] nbPassenger, Integer[] time) {
-//        super(time);
-//        Random rand = new Random();
-//        this.hourOfFuel = rand.nextInt((hourOfFuel[1] - hourOfFuel[0]) + 1) + hourOfFuel[0];
-//        this.nbPassenger = rand.nextInt((nbPassenger[1] - nbPassenger[0]) + 1) + nbPassenger[0];
-//
-//    }
 
     /**
      * @return int hour of fuel of the plane

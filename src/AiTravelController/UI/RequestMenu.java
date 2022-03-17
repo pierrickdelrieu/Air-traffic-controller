@@ -50,11 +50,6 @@ public class RequestMenu extends Menu {
 
         int cptTotOption = 1;
         for (Request request: AirTravelController.getInstance().getCurrentRequest()) {
-            PlaneRequest r2 = (PlaneRequest) request;
-            System.out.println("5 ---------- " + r2.getPlane().getHourOfFuel() + r2.getPlane().getRunwayTime() + r2.getPlane().getNbPassenger() + "---------- " );
-            System.out.println("6 ---------- " + r2.getClass() + "  |  " + request.getClass());
-            System.out.println("7 ---------- " + r2.equals(request));
-            System.out.println(r2);
             System.out.println(request);
 
             for (Option option: request.getOptions()) {
