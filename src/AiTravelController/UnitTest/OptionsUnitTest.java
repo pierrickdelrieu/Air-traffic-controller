@@ -102,10 +102,8 @@ public class OptionsUnitTest {
             return false;
         }
 
-
         System.out.println("All tests passed with success");
         return true;
-
     }
 
     public static boolean AirRefuelingTest(){
@@ -140,10 +138,10 @@ public class OptionsUnitTest {
 
         option.apply();
 
-        if(WaitingPlaneController.getPlanes().get(0).getHourOfFuel() != WaitingPlaneController.getPlanes().get(0).MAXFUEL)
+        if(WaitingPlaneController.getPlanes().get(0).getHourOfFuel() != 4)
             return false;
 
-        if(WaitingPlaneController.getPlanes().get(1).getHourOfFuel() != WaitingPlaneController.getPlanes().get(0).MAXFUEL)
+        if(WaitingPlaneController.getPlanes().get(1).getHourOfFuel() != 4)
             return false;
 
         return true;

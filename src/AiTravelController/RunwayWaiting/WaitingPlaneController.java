@@ -30,6 +30,13 @@ public class WaitingPlaneController {
 
     /**
      *
+     */
+    public static void addFuel(int hours){
+        planes.forEach((plane) -> plane.increaseHourOfFuel(hours));
+    }
+
+    /**
+     *
      * @return
      */
     public static boolean hasWaitingPlane(){
@@ -42,13 +49,6 @@ public class WaitingPlaneController {
      */
     public static void removePlane(Plane p){
         planes.remove(p);
-    }
-
-    /**
-     *
-     */
-    public static void setFuelAtMaxForAllPlane(){
-        planes.forEach((plane) -> plane.setHourOfFuel(plane.MAXFUEL));
     }
 
     /**

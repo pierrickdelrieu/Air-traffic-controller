@@ -5,7 +5,7 @@ import AiTravelController.RunwayWaiting.WaitingPlaneController;
 public class AirRefuelingOpt extends Option{
 
     public AirRefuelingOpt() {
-        super("Air refueling", "At least one plan in air", "Adding maximum fuel to all waiting airplanes in air");
+        super("Air refueling", "At least one plan in air", "Adding 2 hour fuel to all waiting airplanes in air");
     }
 
     @Override
@@ -15,6 +15,6 @@ public class AirRefuelingOpt extends Option{
 
     @Override
     public void apply() {
-        WaitingPlaneController.setFuelAtMaxForAllPlane();
+        WaitingPlaneController.addFuel(2);
     }
 }
