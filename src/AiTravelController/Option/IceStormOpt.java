@@ -12,5 +12,8 @@ public class IceStormOpt extends Option{
         return RunwayController.getInstance().getNbEmptyRunway() >= 1;
     }
 
-    public void apply() { RunwayController.getInstance().getNEmptyRandomRunway(1)[0].empties(); }
+    public void apply() {
+        RunwayController runways = RunwayController.getInstance();
+        runways.removeRunway(runways.getNEmptyRandomRunway(1)[0]);
+    }
 }
