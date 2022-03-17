@@ -10,8 +10,6 @@ import java.util.Random;
 
 public class Plane extends Element {
 
-    public final int MAXFUEL = 24;
-
     private final String name;
     private int hourOfFuel;
     private final int nbPassenger;
