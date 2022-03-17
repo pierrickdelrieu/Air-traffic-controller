@@ -1,14 +1,16 @@
 package AiTravelController.Request;
 
+import AiTravelController.Element.Element;
 import AiTravelController.Option.Option;
 import java.util.ArrayList;
 
-public class Request {
+public class Request implements Cloneable {
 
     private final double rarity;
     private final String title;
-    private final String desc;
+    private String desc;
     private final ArrayList<Option> options;
+
 
 
     public Request(double rarity, String title, String desc, ArrayList<Option> options) {
@@ -16,6 +18,42 @@ public class Request {
         this.title = title;
         this.desc = desc;
         this.options = options;
+    }
+
+    public Request(Request r) {
+        this.rarity = r.rarity;
+        this.title = r.title;
+        this.desc = r.desc;
+        this.options = r.options;
+    }
+
+//    @Override
+//    public Request clone() {
+//        return new Request(this.rarity, this.title, this.desc, this.options);
+//    }
+
+
+
+    public boolean chooseOption(Option option) {
+        if (options.contains(option)) {
+            System.out.println("Option is apply");
+            option.apply();
+            return true;
+        }
+        return false;
+    }
+
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getDescr() {
+        return this.desc;
+    }
+
+    public void setDescr(String string) {
+        this.desc = string;
     }
 
     /**
@@ -36,8 +74,17 @@ public class Request {
 
     @Override
     public String toString() {
-        return "---- Request : " + this.title + " (" + (this.rarity) + "%) ---- \n" +
-                this.desc + "\n\n";
+        return "---- Request : " + this.getTitle() + " (" + (this.getRarity()) + "%) ---- \n" +
+                this.getDescr() + "\n\n";
     }
 
+    @Override
+    public Request clone() {
+        try {
+            Request clone = (Request) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

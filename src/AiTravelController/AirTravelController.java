@@ -31,7 +31,8 @@ public class AirTravelController {
      * Update of the current round requests
      * @param newRequests Array of new request
      */
-    public void addCurrentRequest(ArrayList<Request> newRequests) {
+    public void replaceCurrentRequest(ArrayList<Request> newRequests) {
+        currentRequest.clear();
         currentRequest.addAll(newRequests);
     }
 

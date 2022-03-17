@@ -5,6 +5,7 @@ import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
 import AiTravelController.Element.PlaneType;
 import AiTravelController.Option.Option;
+import AiTravelController.Request.PlaneRequest;
 import AiTravelController.Request.Request;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 
@@ -49,6 +50,11 @@ public class RequestMenu extends Menu {
 
         int cptTotOption = 1;
         for (Request request: AirTravelController.getInstance().getCurrentRequest()) {
+            PlaneRequest r2 = (PlaneRequest) request;
+            System.out.println("5 ---------- " + r2.getPlane().getHourOfFuel() + r2.getPlane().getRunwayTime() + r2.getPlane().getNbPassenger() + "---------- " );
+            System.out.println("6 ---------- " + r2.getClass() + "  |  " + request.getClass());
+            System.out.println("7 ---------- " + r2.equals(request));
+            System.out.println(r2);
             System.out.println(request);
 
             for (Option option: request.getOptions()) {
@@ -80,7 +86,10 @@ public class RequestMenu extends Menu {
             return null;
         } else {
             if (select != cptTotOption) {
-                options.get(select).apply();
+//                options.get(select).apply();
+                if (!requests.get(select).chooseOption(options.get(select))) {
+                    return null;
+                }
 
                 // Clear current request
                 AirTravelController.getInstance().clearRequest(requests.get(select));

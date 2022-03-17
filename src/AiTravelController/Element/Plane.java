@@ -16,21 +16,23 @@ public class Plane extends Element {
     private int hourOfFuel;
     private final int nbPassenger;
 
-    public Plane(String name, int hourOfFuel, int nbPassenger, int time) {
-        super(time);
-        this.name = name;
-        this.hourOfFuel = hourOfFuel;
-        this.nbPassenger = nbPassenger;
-    }
-
-    public Plane(Integer[] hourOfFuel, Integer[] nbPassenger, Integer[] time) {
+    public Plane(int hourOfFuel, int nbPassenger, int time) {
         super(time);
         Random rand = new Random();
-        this.hourOfFuel = rand.nextInt((hourOfFuel[1] - hourOfFuel[0]) + 1) + hourOfFuel[0];
-        this.nbPassenger = rand.nextInt((nbPassenger[1] - nbPassenger[0]) + 1) + nbPassenger[0];
-        this.name = "PL" + rand.nextInt(10) + this.hourOfFuel + rand.nextInt(10) + getRunwayTime();
+        this.hourOfFuel = hourOfFuel;
+        this.nbPassenger = nbPassenger;
+//        this.name = "PL" + rand.nextInt(10) + this.hourOfFuel + rand.nextInt(10) + getRunwayTime();
+        this.name = "PL" + this.hourOfFuel + getRunwayTime() + getNbPassenger();
 
     }
+
+//    public Plane(Integer[] hourOfFuel, Integer[] nbPassenger, Integer[] time) {
+//        super(time);
+//        Random rand = new Random();
+//        this.hourOfFuel = rand.nextInt((hourOfFuel[1] - hourOfFuel[0]) + 1) + hourOfFuel[0];
+//        this.nbPassenger = rand.nextInt((nbPassenger[1] - nbPassenger[0]) + 1) + nbPassenger[0];
+//
+//    }
 
     /**
      * @return int hour of fuel of the plane
