@@ -2,10 +2,12 @@ package AiTravelController;
 
 import AiTravelController.Element.Plane;
 import AiTravelController.Request.Request;
+import AiTravelController.Request.RequestController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 import AiTravelController.UI.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class AirTravelController {
@@ -56,7 +58,13 @@ public class AirTravelController {
      * Initialization of the game start data.
      * At the beginning of the game, the main menu is displayed.
      */
-    public void run() { MainMenu.getInstance().show();}
+    public void run() {
+        Random rand = new Random();
+        int nbRequest = 1 + rand.nextInt(3);
+
+        AirTravelController.getInstance().replaceCurrentRequest(RequestController.getInstance().chooseRandomRequest(nbRequest));
+        MainMenu.getInstance().show();
+    }
 
     /**
      * Getter of number of deaths
