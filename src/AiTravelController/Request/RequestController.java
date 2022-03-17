@@ -1,52 +1,81 @@
 package AiTravelController.Request;
 
-import AiTravelController.Option.AllowLandingOpt;
+import AiTravelController.Element.Plane;
 import AiTravelController.Option.Option;
 import AiTravelController.Option.OptionController;
-import AiTravelController.Option.PlaceOnStandbyOpt;
-
 
 import java.util.*;
 
+enum RequestType {PLANE_REQUEST, DEFAULT};
+
 public class RequestController {
+    private static RequestController instance = null;
+    private ArrayList<Request> requests = new ArrayList<Request>();;
+
+
+    public static RequestController getInstance() {
+        if (instance == null) {
+            instance = new RequestController();
+        }
+        return instance;
+    }
+
+
+//    public Request getRequest(RequestType type, double rarity, String title, String desc, ArrayList<Option> options) {
+//        return switch (type) {
+//            case PLANE_REQUEST -> new PlaneRequest(rarity, title, desc, options);
+//            case DEFAULT -> new Request(rarity, title, desc, options);
+////            default -> new Request(rarity, title, desc, options);
+//        };
+//    }
+
+
     private RequestController(){
-        requests = new ArrayList<Request>();
-
         // Options
-        HashMap<String, Option> options = OptionController.getOptions();
+        HashMap<String, Option> options = OptionController.getOptionsWithoutParams();
 
 
-        Request planeLanding = new Request(40.0, "Plane Landing",
-                "Plane requests to land. It has [3-5] hours of fuel left to wait. It needs [1-4] hours of runway time." +
-                        "\nIt has [100-500] passengers.",
-                new ArrayList<Option>(List.of(
-                        new AllowLandingOpt(new HashMap<>(
-                                Map.of("minHourOfFuel", 3,
-                                        "maxHourOfFuel", 5,
-                                        "minHourOfRunway", 1,
-                                        "maxHourOfRunway", 4,
+
+        Request planeLanding = new PlaneRequest(40.0, "Plane Landing",
+                "Plane requests to land. It has %d hours of fuel left to wait. It needs %d hours of runway time." +
+                        "\nIt has %d passengers.",
+                new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))),
+                Map.of("minHourOfFuel", 1,
+                                        "maxHourOfFuel", 3,
+                                        "minRunwayTime", 3,
+                                        "maxRunwayTime", 5,
                                         "minNbPassenger", 100,
-                                        "maxNbPassenger", 500))),
-                        new PlaceOnStandbyOpt(new HashMap<>(
-                                Map.of("minHourOfFuel", 3,
-                                        "maxHourOfFuel", 5,
-                                        "minHourOfRunway", 1,
-                                        "maxHourOfRunway", 4,
-                                        "minNbPassenger", 100,
-                                        "maxNbPassenger", 500))))));
+                                        "maxNbPassenger", 500));
+
+
         requests.add(planeLanding);
+
 
 //        Request emergencyLanding = new Request(5.0, "Emergency Landing",
 //                "Plane requests to land. It has [1-3] hours of fuel left to wait. It requires [3-5] hours of runway time." +
 //                        "\nIt has [100-500] passengers.",
-//                new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))));
+//                new ArrayList<Option>(List.of(
+//                        new AllowLandingOpt(new HashMap<>(
+//                                Map.of("minHourOfFuel", 1,
+//                                        "maxHourOfFuel", 3,
+//                                        "minHourOfRunway", 3,
+//                                        "maxHourOfRunway", 5,
+//                                        "minNbPassenger", 100,
+//                                        "maxNbPassenger", 500))),
+//                        new PlaceOnStandbyOpt(new HashMap<>(
+//                                Map.of("minHourOfFuel", 1,
+//                                        "maxHourOfFuel", 3,
+//                                        "minHourOfRunway", 3,
+//                                        "maxHourOfRunway", 5,
+//                                        "minNbPassenger", 100,
+//                                        "maxNbPassenger", 500))))));
 //        requests.add(emergencyLanding);
 //
 //        Request fundingEvent = new Request(10.0, "Funding Event",
 //                "Increase in funding allows for one of the following bonuses.",
 //                new ArrayList<Option>(List.of(options.get("emptyRandomRunway"), options.get("rescueTeam"), options.get("airRefueling"))));
 //        requests.add(fundingEvent);
-//
+
 //        Request jumboJet = new Request(15.0, "Jumbo Jet",
 //                "A large aircraft carrying [300-600] passengers with [4-6] hours of fuel wishes to land." +
 //                        "\nIt needs [4-6] hours of runway time.",
@@ -76,16 +105,7 @@ public class RequestController {
 //        requests.add(johnMcclain);
     }
 
-    private static RequestController instance = null;
-    private ArrayList<Request> requests = null;
 
-
-    public static RequestController getInstance() {
-        if (instance == null) {
-            instance = new RequestController();
-        }
-        return instance;
-    }
 
 
 
@@ -99,31 +119,33 @@ public class RequestController {
     public ArrayList<Request> chooseRandomRequest(int number) {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
+//
+//        for(int i=0 ; i<number ; i++){
+//            Random rand = new Random();
+//
+//            double nbRand = rand.nextDouble(100);
+//            //System.out.println("nbRand : " + nbRand);
+//
+//            double min = 0.0;
+//            double max = requests.get(0).getRarity();
+//
+//            for(int j = 0; j<requests.size(); j++){
+//
+//                //System.out.println("min : " + min + " max : " + max);
+//                if( (min <= nbRand) && (nbRand < max ) ){
+//                    chosenRequests.add(new Request(requests.get(i)));
+//                }
+//
+//                if(j < requests.size() - 1) {
+//                    min += requests.get(j).getRarity();
+//                    max += requests.get(j + 1).getRarity();
+//                }
+//            }
+//        }
 
-        int nbRequests = requests.size();
-
-        for(int i=0 ; i<number ; i++){
-
-            Random rand = new Random();
-            double nbRand = rand.nextDouble(100);
-            //System.out.println("nbRand : " + nbRand);
-
-            double min = 0.0;
-            double max = requests.get(0).getRarity();
-
-            for(int j = 0; j<nbRequests; j++){
-
-                //System.out.println("min : " + min + " max : " + max);
-                if( (min <= nbRand) && (nbRand < max ) ){
-                    chosenRequests.add(requests.get(j));
-                }
-
-                if(j < nbRequests - 1) {
-                    min += requests.get(j).getRarity();
-                    max += requests.get(j + 1).getRarity();
-                }
-            }
-        }
+//        System.out.println("******** Call choose random");
+//        PlaneRequest r = (PlaneRequest) requests.get(0).clone();
+        chosenRequests.add(requests.get(0).clone());
 
         return chosenRequests;
     }

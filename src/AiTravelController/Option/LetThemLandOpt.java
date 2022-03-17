@@ -17,7 +17,7 @@ public class LetThemLandOpt extends Option{
 
     public void apply() {
         Random rand = new Random();
-        Plane plane = new Plane("AH1004", rand.nextInt(3, 5), rand.nextInt(100, 500), 7);
+        Plane plane = new Plane(rand.nextInt(3, 5), rand.nextInt(100, 500), 7);
         plane.land();
     }
 }
