@@ -7,93 +7,37 @@ import AiTravelController.RunwayWaiting.Runway;
 import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 import AiTravelController.UI.LandingPlaneMenu;
+import AiTravelController.UI.MenuType;
 import AiTravelController.UI.WaitingPlaneMenu;
 
+import javax.xml.parsers.SAXParser;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
 
 public class OptionsUnitTest {
 
-    /* model
-    public static boolean GetPoliceInvolvedTest(){
-        AirTravelController.getInstance();
-        GetPoliceInvolvedOpt option = new GetPoliceInvolvedOpt();
-        // ********** IsValid Test **********
-        // ********** Apply Test **********
-        return true;
-    }
-     */
+    public static void MainOptionsUnitTest(){
 
-    public static boolean MainOptionsUnitTest(){
+        //System.out.println(AirRefuelingTest());
+        //System.out.println(AllowLandingTest());
+        //System.out.println(CrossWindsTest());
+        //System.out.println(EmptyRandomRunwayTest());
+        //System.out.println(GetPoliceInvolvedTest());
 
-        System.out.println("Process all Options Unit Tests");
+        //System.out.println(IceStormTest());
+        //System.out.println(IcyRunwaysTest());
+        //System.out.println(LetTheManGoTest());
+        //System.out.println(LetThemLandTest());
+        //System.out.println(LockdownTheRunwayTest());
 
-        if( !AirRefuelingTest() ){
-            System.out.println("AirRefuelingTest is false");
-            return false;
-        }
-        if( !AllowLandingTest() ){
-            System.out.println("AllowLandingTest is false");
-            return false;
-        }
-        if( !CrossWindsTest() ){
-            System.out.println("CrossWindsTest is false");
-            return false;
-        }
-        if( !EmptyRandomRunwayTest() ){
-            System.out.println("EmptyRandomRunwayTest is false");
-            return false;
-        }
-        if( !GetPoliceInvolvedTest() ){
-            System.out.println("GetPoliceInvolvedTest is false");
-            return false;
-        }
+        //System.out.println(PlaceOnStandbyTest());
+        //System.out.println(PlanesLandAnywaysTest());
+        //System.out.println(RefuseThemTest());
+        //System.out.println(RescueTeamTest());
+        //System.out.println(SpaceToProtestTest());
 
-        if( !IceStormTest() ){
-            System.out.println("IceStormTest is false");
-            return false;
-        }
-        if( !IcyRunwaysTest() ){
-            System.out.println("IcyRunwaysTest is false");
-            return false;
-        }
-        if( !LetTheManGoTest() ){
-            System.out.println("LetTheManGoTest is false");
-            return false;
-        }
-        if( !LetThemLandTest() ){
-            System.out.println("LetThemLandTest is false");
-            return false;
-        }
-        if( !LockdownTheRunwayTest() ){
-            System.out.println("LockdownTheRunwayTest is false");
-            return false;
-        }
-
-        if( !PlaceOnStandbyTest() ){
-            System.out.println("PlaceOnStandbyTest is false");
-            return false;
-        }
-        if( !PlanesLandAnywaysTest() ){
-            System.out.println("PlanesLandAnywaysTest is false");
-            return false;
-        }
-        if( !RefuseThemTest() ){
-            System.out.println("RefuseThemTest is false");
-            return false;
-        }
-        if( !RescueTeamTest() ){
-            System.out.println("RescueTeamTest is false");
-            return false;
-        }
-        if( !SpaceToProtestTest() ){
-            System.out.println("SpaceToProtestTest is false");
-            return false;
-        }
-
-        System.out.println("All tests passed with success");
-        return true;
     }
 
     public static boolean AirRefuelingTest(){
@@ -112,7 +56,7 @@ public class OptionsUnitTest {
             return false;
         }
 
-        WaitingPlaneController.addPlane(new Plane(2,2,2));
+        WaitingPlaneController.addPlane(new Plane( 2,2,2));
         // we have one waiting plane, so the option is valid
         if(!option.isValid()){
             return false;
@@ -126,12 +70,15 @@ public class OptionsUnitTest {
 
         // ********** Apply Test **********
 
+        int previousFuelOfPlane1 = WaitingPlaneController.getPlanes().get(0).getHourOfFuel();
+        int previousFuelOfPlane2 = WaitingPlaneController.getPlanes().get(1).getHourOfFuel();
+
         option.apply();
 
-        if(WaitingPlaneController.getPlanes().get(0).getHourOfFuel() != 4)
+        if(WaitingPlaneController.getPlanes().get(0).getHourOfFuel() == previousFuelOfPlane1)
             return false;
 
-        if(WaitingPlaneController.getPlanes().get(1).getHourOfFuel() != 4)
+        if(WaitingPlaneController.getPlanes().get(1).getHourOfFuel() == previousFuelOfPlane2)
             return false;
 
         return true;
@@ -146,23 +93,21 @@ public class OptionsUnitTest {
         // ********** IsValid Test **********
 
         // At this moment all runway are empty, so the option is available
-        if(!option.isValid()) {
+        if (!option.isValid()) {
             return false;
         }
 
 //        LandingPlaneMenu.getInstance().displayBoard();
 
-        for (Runway runway: RunwayController.getInstance().getAllEmptyRunways()) {
-            runway.addElement(new Plane(3, 3,3));
+        for (Runway runway : RunwayController.getInstance().getAllEmptyRunways()) {
+            runway.addElement(new Plane( 3, 3, 3));
         }
 
         // Now, all runway are full
-        if(option.isValid()) {
+        if (option.isValid()) {
             return false;
         }
 //        LandingPlaneMenu.getInstance().displayBoard();
-
-
 
 
         // ********** Apply Test **********
@@ -170,7 +115,7 @@ public class OptionsUnitTest {
         if (RunwayController.getInstance().getNFullRandomRunway(8) == null) {
             return false;
         }
-        for (Runway runway: RunwayController.getInstance().getNFullRandomRunway(8)) {
+        for (Runway runway : RunwayController.getInstance().getNFullRandomRunway(8)) {
             runway.empties();
         }
 //        LandingPlaneMenu.getInstance().displayBoard();
@@ -202,23 +147,26 @@ public class OptionsUnitTest {
         // ********** Apply Test **********
 
         // clear the waiting plane list
-        for(Plane each : WaitingPlaneController.getPlanes()){
-            WaitingPlaneController.removePlane(each);
+        while (WaitingPlaneController.hasWaitingPlane()){
+            WaitingPlaneController.removePlane(WaitingPlaneController.getPlanes().get(0));
         }
 
-        option.apply();
-
-        WaitingPlaneController.addPlane(new Plane(2,2,2));
-        WaitingPlaneController.addPlane(new Plane(2,2,2));
-        WaitingPlaneController.addPlane(new Plane(1,2,2));
-
-        int previousHourOfFuelTest1 = WaitingPlaneController.getPlanes().get(0).getHourOfFuel();
-        int previousHourOfFuelTest2 = WaitingPlaneController.getPlanes().get(1).getHourOfFuel();
+        WaitingPlaneController.addPlane(new Plane( 2,2,2));
+        WaitingPlaneController.addPlane(new Plane( 1,2,2));
+        WaitingPlaneController.addPlane(new Plane( 2,2,2));
 
         option.apply();
+
+        /*
+        // display waiting plane
+        for(Plane each : WaitingPlaneController.getPlanes()){
+            System.out.println(each.toString(MenuType.WAITING));
+        }
+        System.out.println("\n");
+        */
 
         if(WaitingPlaneController.getPlanes().size() != 2) {
-            System.out.println("Error in removing plane from waiting list");
+            System.out.println("Error in removing plane test2 from waiting list");
             return false;
         }
 
@@ -252,7 +200,7 @@ public class OptionsUnitTest {
 
         //we fill in a runway
         for (Runway each: RunwayController.getInstance().getNEmptyRandomRunway(2)) {
-            each.addElement(new Plane(2,2,2));
+            each.addElement(new Plane( 2,2,2));
         }
 
         //LandingPlaneMenu.getInstance().displayBoard();
@@ -275,7 +223,7 @@ public class OptionsUnitTest {
 
         //LandingPlaneMenu.getInstance().displayBoard();
 
-        if(RunwayController.getInstance().getNbEmptyRunway() != previousNumberOfEmptyRunways - 1)
+        if(RunwayController.getInstance().getNbEmptyRunway() == previousNumberOfEmptyRunways + 1)
             return false;
 
 
@@ -357,7 +305,7 @@ public class OptionsUnitTest {
 
         int count = 0;
         for (Runway runway : RunwayController.getInstance().getAllEmptyRunways()) {
-            runway.addElement(new Plane(3, 3, 3));
+            runway.addElement(new Plane( 3, 3, 3));
             count++;
         }
 
@@ -369,10 +317,23 @@ public class OptionsUnitTest {
         AirTravelController.getInstance();
         IcyRunWaysOpt option = new IcyRunWaysOpt();
 
-        if (!option.isValid()) return false;
+        // we clear all runways
+        for (Runway each: RunwayController.getInstance().getRunways()) {
+            each.empties();
+        }
+
+        if (RunwayController.getInstance().getNbEmptyRunway() != 8) {
+            System.out.println("1");
+            return false;
+        }
+
+        if (!option.isValid()) {
+            System.out.println("2");
+            return false;
+        }
 
         Runway[] runway = RunwayController.getInstance().getNEmptyRandomRunway(1); //getting an empty runway
-        runway[0].addElement(new Plane(0, 0, 1)); //adding a plane in it
+        runway[0].addElement(new Plane( 0, 0, 1)); //adding a plane in it
 
         option.apply(); // adding 2 hours wait time to the plane
 
@@ -386,7 +347,7 @@ public class OptionsUnitTest {
 
         if (!option.isValid()) return false; // no requirements so isValid must return true
 
-        WaitingPlaneController.addPlane(new Plane(2, 100, 0));
+        WaitingPlaneController.addPlane(new Plane( 2, 100, 0));
 
         option.apply(); //removing a random waiting plane and killing 100 passengers
 
@@ -433,22 +394,20 @@ public class OptionsUnitTest {
     }
 
     public static boolean PlaceOnStandbyTest() {
+        AirTravelController.getInstance();
         PlaceOnStandbyOpt option = new PlaceOnStandbyOpt();
 
-        AirTravelController.getInstance();
-
+        // ********** IsValid Test **********
+        if (!option.isValid()) // no requirements so isValid must return true
+            return false;
 
         // ********** Apply Test **********
-        // Apply
-        if (WaitingPlaneController.hasWaitingPlane()) {
-            return false;
-        }
-        option.apply();
-        if (!WaitingPlaneController.hasWaitingPlane()) {
-            return false;
-        }
+        int previousNumberOfWaitingPlane = WaitingPlaneController.getPlanes().size();
 
-        return true;
+        option.apply();
+
+        return WaitingPlaneController.getPlanes().size() == previousNumberOfWaitingPlane + 1;
+
     }
 
     public static boolean PlanesLandAnywaysTest(){
@@ -512,7 +471,7 @@ public class OptionsUnitTest {
 
         //we fill in all the runways
         for (Runway each: RunwayController.getInstance().getAllEmptyRunways()) {
-            each.addElement(new Plane(2,2,2));
+            each.addElement(new Plane( 2,2,2));
         }
 
         //LandingPlaneMenu.getInstance().displayBoard();
