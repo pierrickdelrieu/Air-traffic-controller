@@ -74,7 +74,13 @@ public class AirTravelController {
         return numberDied;
     }
     public void increaseNumberDied(int number) { this.numberDied += number;}
-    public void decreaseNumberDied(int number) { this.numberDied -= number;}
+    public void decreaseNumberDied(int number) {
+        if (this.numberDied - number < 0) {
+            this.numberDied = 0;
+        } else {
+            this.numberDied -= number;
+        }
+    }
 
 
 
@@ -92,12 +98,4 @@ public class AirTravelController {
      * @param number_hour int new value of number of hours in the game
      */
     public void setNumberHour(int number_hour) {numberHour = number_hour;}
-
-    /**t
-     * Change the number of dead people
-     * @param number the number of dead people (positive number) or the number of save people (negative number)
-     */
-    public void addNbOfDeadPeople(int number){
-        numberDied += number;
-    }
 }

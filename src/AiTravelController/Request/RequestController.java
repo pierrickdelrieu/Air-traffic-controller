@@ -40,69 +40,65 @@ public class RequestController {
                 "Plane requests to land. It has %d hours of fuel left to wait. It needs %d hours of runway time." +
                         "\nIt has %d passengers.",
                 new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))),
-                Map.of("minHourOfFuel", 1,
-                                        "maxHourOfFuel", 3,
-                                        "minRunwayTime", 3,
-                                        "maxRunwayTime", 5,
-                                        "minNbPassenger", 100,
-                                        "maxNbPassenger", 500));
-
-
+                Map.of("minHourOfFuel", 3,
+                        "maxHourOfFuel", 5,
+                        "minRunwayTime", 1,
+                        "maxRunwayTime", 4,
+                        "minNbPassenger", 100,
+                        "maxNbPassenger", 500));
         requests.add(planeLanding);
 
 
-//        Request emergencyLanding = new Request(5.0, "Emergency Landing",
-//                "Plane requests to land. It has [1-3] hours of fuel left to wait. It requires [3-5] hours of runway time." +
-//                        "\nIt has [100-500] passengers.",
-//                new ArrayList<Option>(List.of(
-//                        new AllowLandingOpt(new HashMap<>(
-//                                Map.of("minHourOfFuel", 1,
-//                                        "maxHourOfFuel", 3,
-//                                        "minHourOfRunway", 3,
-//                                        "maxHourOfRunway", 5,
-//                                        "minNbPassenger", 100,
-//                                        "maxNbPassenger", 500))),
-//                        new PlaceOnStandbyOpt(new HashMap<>(
-//                                Map.of("minHourOfFuel", 1,
-//                                        "maxHourOfFuel", 3,
-//                                        "minHourOfRunway", 3,
-//                                        "maxHourOfRunway", 5,
-//                                        "minNbPassenger", 100,
-//                                        "maxNbPassenger", 500))))));
-//        requests.add(emergencyLanding);
-//
-//        Request fundingEvent = new Request(10.0, "Funding Event",
-//                "Increase in funding allows for one of the following bonuses.",
-//                new ArrayList<Option>(List.of(options.get("emptyRandomRunway"), options.get("rescueTeam"), options.get("airRefueling"))));
-//        requests.add(fundingEvent);
+        Request emergencyLanding = new PlaneRequest(5.0, "Emergency Landing",
+                "Plane requests to land. It has %d hours of fuel left to wait. It requires %d hours of runway time." +
+                        "\nIt has %d passengers.",
+                new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))),
+                Map.of("minHourOfFuel", 1,
+                        "maxHourOfFuel", 3,
+                        "minRunwayTime", 3,
+                        "maxRunwayTime", 5,
+                        "minNbPassenger", 100,
+                        "maxNbPassenger", 500));
+        requests.add(emergencyLanding);
 
-//        Request jumboJet = new Request(15.0, "Jumbo Jet",
-//                "A large aircraft carrying [300-600] passengers with [4-6] hours of fuel wishes to land." +
-//                        "\nIt needs [4-6] hours of runway time.",
-//                new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))));
-//        requests.add(jumboJet);
-//
-//        Request badWeather = new Request(10.0, "Bad weather",
-//                "Select a bad weather event.",
-//                new ArrayList<Option>(List.of(options.get("crossWinds"), options.get("icyRunWays"), options.get("iceStorm"))));
-//        requests.add(badWeather);
-//
-//        Request snakesOnThePlanes = new Request(10.0, "Snakes on the planes",
-//                "Enough is enough!\nA pilot is reporting that their plane is being overrun by snakes. They want to land at your airport.",
-//                new ArrayList<Option>(List.of(options.get("letThemLand"), options.get("refuseThem"))));
-//        requests.add(snakesOnThePlanes);
-//
-//        Request protests = new Request(5.0, "Protests",
-//                "A group of protestors are blocking the runway claiming that your airplanes are dropping chemtrails," +
-//                        "\nwhich has caused the following health issues: \"makes their toothpaste taste like mint.\"",
-//                new ArrayList<Option>(List.of(options.get("spaceToProtest"), options.get("getPoliceInvolved"), options.get("planesLandAnyways"))));
-//        requests.add(protests);
-//
-//        Request johnMcclain = new Request(5.0, "John McClane",
-//                "Security reports of a man hijacking a plane on the runway. He claims he needs to stop the terrorists from stealing christmas." +
-//                        "\nDo you lock down the runway or let them go?",
-//                new ArrayList<Option>(List.of(options.get("lockDownTheRunway"), options.get("letTheManGo"))));
-//        requests.add(johnMcclain);
+
+        Request fundingEvent = new Request(10.0, "Funding Event",
+                "Increase in funding allows for one of the following bonuses.",
+                new ArrayList<Option>(List.of(options.get("emptyRandomRunway"), options.get("rescueTeam"), options.get("airRefueling"))));
+        requests.add(fundingEvent);
+
+
+        Request jumboJet = new Request(15.0, "Jumbo Jet",
+                "A large aircraft carrying [300-600] passengers with [4-6] hours of fuel wishes to land." +
+                        "\nIt needs [4-6] hours of runway time.",
+                new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))));
+        requests.add(jumboJet);
+
+
+        Request badWeather = new Request(10.0, "Bad weather",
+                "Select a bad weather event.",
+                new ArrayList<Option>(List.of(options.get("crossWinds"), options.get("icyRunWays"), options.get("iceStorm"))));
+        requests.add(badWeather);
+
+
+        Request snakesOnThePlanes = new Request(10.0, "Snakes on the planes",
+                "Enough is enough!\nA pilot is reporting that their plane is being overrun by snakes. They want to land at your airport.",
+                new ArrayList<Option>(List.of(options.get("letThemLand"), options.get("refuseThem"))));
+        requests.add(snakesOnThePlanes);
+
+
+        Request protests = new Request(5.0, "Protests",
+                "A group of protestors are blocking the runway claiming that your airplanes are dropping chemtrails," +
+                        "\nwhich has caused the following health issues: \"makes their toothpaste taste like mint.\"",
+                new ArrayList<Option>(List.of(options.get("spaceToProtest"), options.get("getPoliceInvolved"), options.get("planesLandAnyways"))));
+        requests.add(protests);
+
+
+        Request johnMcclain = new Request(5.0, "John McClane",
+                "Security reports of a man hijacking a plane on the runway. He claims he needs to stop the terrorists from stealing christmas." +
+                        "\nDo you lock down the runway or let them go?",
+                new ArrayList<Option>(List.of(options.get("lockDownTheRunway"), options.get("letTheManGo"))));
+        requests.add(johnMcclain);
     }
 
 
@@ -119,7 +115,7 @@ public class RequestController {
     public ArrayList<Request> chooseRandomRequest(int number) {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
-//
+
 //        for(int i=0 ; i<number ; i++){
 //            Random rand = new Random();
 //
@@ -133,7 +129,8 @@ public class RequestController {
 //
 //                //System.out.println("min : " + min + " max : " + max);
 //                if( (min <= nbRand) && (nbRand < max ) ){
-//                    chosenRequests.add(new Request(requests.get(i)));
+////                    chosenRequests.add(new Request(requests.get(i)));
+//                    chosenRequests.add(requests.get(i).clone());
 //                }
 //
 //                if(j < requests.size() - 1) {
@@ -143,7 +140,7 @@ public class RequestController {
 //            }
 //        }
 
-        chosenRequests.add(requests.get(0).clone());
+        chosenRequests.add(requests.get(2).clone());
 
         return chosenRequests;
     }

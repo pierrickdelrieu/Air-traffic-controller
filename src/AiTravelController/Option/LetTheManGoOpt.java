@@ -16,6 +16,6 @@ public class LetTheManGoOpt extends Option{
 
     public void apply() {
         WaitingPlaneController.removePlane(WaitingPlaneController.getRandomPlane()); // removing random plane
-        AirTravelController.getInstance().addNbOfDeadPeople(100); // killing 100 passengers
+        AirTravelController.getInstance().increaseNumberDied(100); // killing 100 passengers
     }
 }

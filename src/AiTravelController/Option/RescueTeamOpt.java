@@ -15,6 +15,6 @@ public class RescueTeamOpt extends Option{
 
     @Override
     public void apply() {
-        AirTravelController.getInstance().addNbOfDeadPeople(-100);
+        AirTravelController.getInstance().decreaseNumberDied(100);
     }
 }

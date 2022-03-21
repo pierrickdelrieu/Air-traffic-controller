@@ -15,6 +15,6 @@ public class PlanesLandAnywaysOpt extends Option{
 
     @Override
     public void apply() {
-        AirTravelController.getInstance().addNbOfDeadPeople(100);
+        AirTravelController.getInstance().increaseNumberDied(100);
     }
 }
