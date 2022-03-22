@@ -24,7 +24,7 @@ public abstract class Element {
     }
 
     /**
-     * Allows to increment or decrement the waiting time on the track according to the increase of the number of hours of the game
+     * Allows incrementing or decrement the waiting time on the track according to the increase of the number of hours of the game
      * @param runwayTime new time needed on the runway
      */
     public void setRunwayTime(int runwayTime) {

@@ -22,7 +22,9 @@ public class AirTravelController {
     private int numberHour = 0;
     private ArrayList<Request> currentRequest = new ArrayList<>();
 
-
+    /**
+     * Static method to get or create instance of Singleton AirTravelController Class
+     */
     public static AirTravelController getInstance(){
         if (instance == null) {
             instance = new AirTravelController();
@@ -102,7 +104,11 @@ public class AirTravelController {
     public void setNumberHour(int number_hour) {numberHour = number_hour;}
 
 
-
+    /**
+     * Reinitialize the instance of RunwayController and WaitingPlaneController
+     * Set the number of hour and the number of dead passengers to 0
+     * This function is used in the UnitTest verification
+     */
     public void clear() {
         this.setNumberHour(0);
         this.numberDied = 0;

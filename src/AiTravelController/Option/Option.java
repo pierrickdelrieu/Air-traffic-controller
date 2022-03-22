@@ -12,24 +12,14 @@ public abstract class Option {
         this.consq = consq;
     }
 
-    /**
-     *
-     * @return
-     */
     public boolean isValid() {
         return false;
     }
 
-    /**
-     *
-     */
-    public void apply() {
-
-    }
+    public void apply() {}
 
     @Override
     public String toString() {
-
         return title + '\n' +
                 "Requirements : " + requirement + '\n' +
                 "Consequences : " + consq;

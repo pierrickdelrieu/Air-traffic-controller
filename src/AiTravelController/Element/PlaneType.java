@@ -1,3 +1,3 @@
 package AiTravelController.Element;
 
-public enum PlaneType {WAITING, LANDED} ;
+public enum PlaneType {WAITING, LANDED}
