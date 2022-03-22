@@ -60,7 +60,7 @@ public class RunwayController {
      * @return Array of empty runway
      */
     public Runway[] getNEmptyRandomRunway(int number) {
-        if (getNbEmptyRunway() != 0) {
+        if (number <= getNbEmptyRunway()) {
             Runway[] x = new Runway[number];
 
             Random rand = new Random();
@@ -90,7 +90,7 @@ public class RunwayController {
      * @return Array of full runway
      */
     public Runway[] getNFullRandomRunway(int number) {
-        if (this.runways.size() - getNbEmptyRunway() != 0) {
+        if (number <= runways.size() - getNbEmptyRunway()) {
             Runway[] x = new Runway[number];
 
             Random rand = new Random();
@@ -98,8 +98,9 @@ public class RunwayController {
             ArrayList<Integer> runwayIndex = new ArrayList<Integer>();
             for (int i = 0; i < number; i++) {
                 int index;
+
                 do {
-                    index = rand.nextInt(number);
+                    index = rand.nextInt(runways.size());
                 } while (runways.get(index).isEmpty() || runwayIndex.contains(index));
 
                 runwayIndex.add(index);
@@ -158,7 +159,8 @@ public class RunwayController {
      * @param number int number of tracks to be emptied
      */
     public void emptiesNRandomRunway(int number) {
-        if (number > (INIT_RUNWAY_NB - getNbEmptyRunway())) {
+        if (number <= (runways.size() - getNbEmptyRunway())) {
+
             Runway[] ways = getNFullRandomRunway(number);
 
             for (Runway way: ways) {
@@ -166,7 +168,7 @@ public class RunwayController {
             }
 
         } else {
-            for (Runway runway: getAllEmptyRunways()) {
+            for (Runway runway: getNFullRandomRunway(runways.size() - getNbEmptyRunway())) {
                 runway.empties();
             }
         }
