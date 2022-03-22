@@ -3,6 +3,8 @@ package AiTravelController;
 import AiTravelController.Element.Plane;
 import AiTravelController.Request.Request;
 import AiTravelController.Request.RequestController;
+import AiTravelController.RunwayWaiting.Runway;
+import AiTravelController.RunwayWaiting.RunwayController;
 import AiTravelController.RunwayWaiting.WaitingPlaneController;
 import AiTravelController.UI.*;
 
@@ -98,4 +100,13 @@ public class AirTravelController {
      * @param number_hour int new value of number of hours in the game
      */
     public void setNumberHour(int number_hour) {numberHour = number_hour;}
+
+
+
+    public void clear() {
+        this.setNumberHour(0);
+        this.numberDied = 0;
+        RunwayController.getInstance().clear();
+        WaitingPlaneController.clear();
+    }
 }

@@ -141,7 +141,7 @@ public class RequestController {
 //        }
 
         chosenRequests.add(requests.get(0).clone());
-        chosenRequests.add(requests.get(4).clone());
+        chosenRequests.add(requests.get(7).clone());
 
         return chosenRequests;
     }
