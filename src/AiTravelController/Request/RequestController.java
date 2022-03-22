@@ -116,31 +116,31 @@ public class RequestController {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
 
-//        for(int i=0 ; i<number ; i++){
-//            Random rand = new Random();
-//
-//            double nbRand = rand.nextDouble(100);
-//            //System.out.println("nbRand : " + nbRand);
-//
-//            double min = 0.0;
-//            double max = requests.get(0).getRarity();
-//
-//            for(int j = 0; j<requests.size(); j++){
-//
-//                //System.out.println("min : " + min + " max : " + max);
-//                if( (min <= nbRand) && (nbRand < max ) ){
-////                    chosenRequests.add(new Request(requests.get(i)));
-//                    chosenRequests.add(requests.get(i).clone());
-//                }
-//
-//                if(j < requests.size() - 1) {
-//                    min += requests.get(j).getRarity();
-//                    max += requests.get(j + 1).getRarity();
-//                }
-//            }
-//        }
+        for(int i=0 ; i<number ; i++){
+            Random rand = new Random();
 
-        chosenRequests.add(requests.get(2).clone());
+            double nbRand = rand.nextDouble(100);
+            //System.out.println("nbRand : " + nbRand);
+
+            double min = 0.0;
+            double max = requests.get(0).getRarity();
+
+            for(int j = 0; j<requests.size(); j++){
+
+                //System.out.println("min : " + min + " max : " + max);
+                if( (min <= nbRand) && (nbRand < max ) ){
+//                    chosenRequests.add(new Request(requests.get(i)));
+                    chosenRequests.add(requests.get(i).clone());
+                }
+
+                if(j < requests.size() - 1) {
+                    min += requests.get(j).getRarity();
+                    max += requests.get(j + 1).getRarity();
+                }
+            }
+        }
+
+//        chosenRequests.add(requests.get(2).clone());
 
         return chosenRequests;
     }

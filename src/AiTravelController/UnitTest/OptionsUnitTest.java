@@ -20,29 +20,32 @@ public class OptionsUnitTest {
 
     public static void MainOptionsUnitTest(){
 
-        //System.out.println(AirRefuelingTest());
-        //System.out.println(AllowLandingTest());
-        //System.out.println(CrossWindsTest());
-        //System.out.println(EmptyRandomRunwayTest());
-        //System.out.println(GetPoliceInvolvedTest());
+        System.out.println("AirRefuelingTest : " + AirRefuelingTest());
+        System.out.println("AllowLandingTest : " + AllowLandingTest());
+        System.out.println("CrossWindsTest : " + CrossWindsTest());
+        System.out.println("EmptyRandomRunwayTest : " + EmptyRandomRunwayTest());
+        System.out.println("GetPoliceInvolvedTest : " + GetPoliceInvolvedTest());
 
-        //System.out.println(IceStormTest());
-        //System.out.println(IcyRunwaysTest());
-        //System.out.println(LetTheManGoTest());
-        //System.out.println(LetThemLandTest());
-        //System.out.println(LockdownTheRunwayTest());
+        System.out.println("IceStormTest : " + IceStormTest());
+        System.out.println("IcyRunwaysTest : " + IcyRunwaysTest());
+        System.out.println("LetTheManGoTest : " + LetTheManGoTest());
+        System.out.println("LetThemLandTest : " + LetThemLandTest());
+        System.out.println("LockdownTheRunwayTest : " + LockdownTheRunwayTest());
 
-        //System.out.println(PlaceOnStandbyTest());
-        //System.out.println(PlanesLandAnywaysTest());
-        //System.out.println(RefuseThemTest());
-        //System.out.println(RescueTeamTest());
-        //System.out.println(SpaceToProtestTest());
+        System.out.println("PlaceOnStandbyTest : " + PlaceOnStandbyTest());
+        System.out.println("PlanesLandAnywaysTest : " + PlanesLandAnywaysTest());
+        System.out.println("RefuseThemTest : " + RefuseThemTest());
+        System.out.println("RescueTeamTest : " + RescueTeamTest());
+        System.out.println("SpaceToProtestTest : " + SpaceToProtestTest());
 
     }
 
     public static boolean AirRefuelingTest(){
         AirTravelController.getInstance();
         AirRefuelingOpt option = new AirRefuelingOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
 
@@ -86,9 +89,12 @@ public class OptionsUnitTest {
 
     public static boolean AllowLandingTest() {
         AllowLandingOpt option = new AllowLandingOpt();
+        option.setElement(new Plane( 3, 3, 3));
 
         AirTravelController.getInstance();
 
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
 
@@ -96,6 +102,7 @@ public class OptionsUnitTest {
         if (!option.isValid()) {
             return false;
         }
+
 
 //        LandingPlaneMenu.getInstance().displayBoard();
 
@@ -105,6 +112,7 @@ public class OptionsUnitTest {
 
         // Now, all runway are full
         if (option.isValid()) {
+            System.out.println(2);
             return false;
         }
 //        LandingPlaneMenu.getInstance().displayBoard();
@@ -139,6 +147,9 @@ public class OptionsUnitTest {
     public static boolean CrossWindsTest() {
         AirTravelController.getInstance();
         CrossWindsOpt option = new CrossWindsOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
         if(!option.isValid()) // no requirements so isValid must return true
@@ -179,8 +190,10 @@ public class OptionsUnitTest {
     }
 
     public static boolean EmptyRandomRunwayTest(){
-        AirTravelController.getInstance();
         EmptyRandomRunwayOpt option = new EmptyRandomRunwayOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
 
@@ -231,8 +244,10 @@ public class OptionsUnitTest {
     }
 
     public static boolean GetPoliceInvolvedTest(){
-        AirTravelController.getInstance();
         GetPoliceInvolvedOpt option = new GetPoliceInvolvedOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
 
@@ -296,8 +311,10 @@ public class OptionsUnitTest {
 
 
     public static boolean IceStormTest() {
-        AirTravelController.getInstance();
         IceStormOpt option = new IceStormOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         if (!option.isValid()) return false; //the 8 runways are empty sor isValid() must be true
 
@@ -314,13 +331,11 @@ public class OptionsUnitTest {
 
 
     public static boolean IcyRunwaysTest() {
-        AirTravelController.getInstance();
         IcyRunWaysOpt option = new IcyRunWaysOpt();
 
-        // we clear all runways
-        for (Runway each: RunwayController.getInstance().getRunways()) {
-            each.empties();
-        }
+        // Clean system
+        AirTravelController.getInstance().clear();
+
 
         if (RunwayController.getInstance().getNbEmptyRunway() != 8) {
             System.out.println("1");
@@ -342,8 +357,10 @@ public class OptionsUnitTest {
 
 
     public static boolean LetTheManGoTest() {
-        AirTravelController.getInstance();
         LetTheManGoOpt option = new LetTheManGoOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         if (!option.isValid()) return false; // no requirements so isValid must return true
 
@@ -359,8 +376,10 @@ public class OptionsUnitTest {
 
 
     public static boolean LetThemLandTest() {
-        AirTravelController.getInstance();
         LetThemLandOpt option = new LetThemLandOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         if (!option.isValid()) return false; //at least 1 empty runway
 
@@ -377,8 +396,10 @@ public class OptionsUnitTest {
 
 
     public static boolean LockdownTheRunwayTest() {
-        AirTravelController.getInstance();
         LockdownTheRunwayOpt option = new LockdownTheRunwayOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         if (!option.isValid()) return false;
 
@@ -394,8 +415,10 @@ public class OptionsUnitTest {
     }
 
     public static boolean PlaceOnStandbyTest() {
-        AirTravelController.getInstance();
         PlaceOnStandbyOpt option = new PlaceOnStandbyOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
         if (!option.isValid()) // no requirements so isValid must return true
@@ -404,15 +427,19 @@ public class OptionsUnitTest {
         // ********** Apply Test **********
         int previousNumberOfWaitingPlane = WaitingPlaneController.getPlanes().size();
 
+
         option.apply();
+
 
         return WaitingPlaneController.getPlanes().size() == previousNumberOfWaitingPlane + 1;
 
     }
 
     public static boolean PlanesLandAnywaysTest(){
-        AirTravelController.getInstance();
         PlanesLandAnywaysOpt option = new PlanesLandAnywaysOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
         if(!option.isValid()) // no requirements so isValid must return true
@@ -428,8 +455,10 @@ public class OptionsUnitTest {
     }
 
     public static boolean RefuseThemTest(){
-        AirTravelController.getInstance();
         RefuseThemOpt option = new RefuseThemOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
         if(!option.isValid()) // no requirements so isValid must return true
@@ -445,8 +474,10 @@ public class OptionsUnitTest {
     }
 
     public static boolean RescueTeamTest(){
-        AirTravelController.getInstance();
         RescueTeamOpt option = new RescueTeamOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
         if(!option.isValid()) // no requirements so isValid must return true
@@ -454,16 +485,18 @@ public class OptionsUnitTest {
 
 
         // ********** Apply Test **********
-        int previousNumberOfDead = AirTravelController.getInstance().getNumberDied();
+        AirTravelController.getInstance().increaseNumberDied(200);
         option.apply();
 
-        return AirTravelController.getInstance().getNumberDied() == previousNumberOfDead - 100;
+        return AirTravelController.getInstance().getNumberDied() == 200 - 100;
 
     }
 
     public static boolean SpaceToProtestTest(){
-        AirTravelController.getInstance();
         SpaceToProtestOpt option = new SpaceToProtestOpt();
+
+        // Clean system
+        AirTravelController.getInstance().clear();
 
         // ********** IsValid Test **********
 

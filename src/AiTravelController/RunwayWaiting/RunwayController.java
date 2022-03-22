@@ -30,6 +30,16 @@ public class RunwayController {
         return runways;
     }
 
+    public void clear() {
+        for (Runway runway : runways) {
+            runway.empties();
+        }
+
+        for (int i = 0; i < 8 - runways.size(); i++) {
+            runways.add(new Runway());
+        }
+    }
+
     public void removeRunway(Runway runway){
         runways.remove(runway);
     }
@@ -104,16 +114,6 @@ public class RunwayController {
         return null;
     }
 
-//    /**
-//     * Empty a random runway
-//     */
-//    public void emptiesRandomRunway() {
-//        Random rand = new Random();
-//        int nbRunway = rand.nextInt(7);
-//
-//        runways[nbRunway].empties();
-//    }
-
     /**
      * Check of whether there is a runway in the system
      * @return true if there is a runway in the system and false otherwise
@@ -136,21 +136,6 @@ public class RunwayController {
         }
         return emptyRunway;
     }
-
-
-//    /**
-//     * Getter of one empty runway
-//     * @return Empty runway
-//     */
-//    public Runway getEmptyRunway() {
-//        ArrayList<Runway> x = getEmptyRunways();
-//
-//        if (x.size() != 0) {
-//            return x.get(0);
-//        }
-//
-//        return null;
-//    }
 
     /**
      * Check if there is at least ${number} empty runway
@@ -192,7 +177,7 @@ public class RunwayController {
      * @param time
      */
     public void addRunwayTimeToPlanes(int time){
-        for (Runway runway : RunwayController.getInstance().getRunways()) {
+        for (Runway runway : runways) {
             Element element = runway.getElement();
             if (element != null && element.getClass().getName().equals("AiTravelController.Element.Plane"))
                 element.increaseRunwayTime(time);

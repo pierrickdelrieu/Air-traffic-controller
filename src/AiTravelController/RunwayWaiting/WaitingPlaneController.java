@@ -12,6 +12,10 @@ public class WaitingPlaneController {
         return planes;
     }
 
+    public static void clear() {
+        planes.clear();
+    }
+
     /**
      *
      * @return
