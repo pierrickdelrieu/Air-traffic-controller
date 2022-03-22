@@ -51,8 +51,10 @@ public class WaitingPlaneController {
      *
      * @param p
      */
-    public static void removePlane(Plane p){
-        planes.remove(p);
+    public static void removePlane(Plane p) {
+        if (p != null) {
+            planes.remove(p);
+        }
     }
 
     /**
@@ -82,7 +84,10 @@ public class WaitingPlaneController {
      * @return
      */
     public static Plane getRandomPlane(){
-        Random rand = new Random();
-        return planes.get(rand.nextInt(planes.size()));
+        if (planes.size() != 0) {
+            Random rand = new Random();
+            return planes.get(rand.nextInt(planes.size()));
+        }
+        return null;
     }
 }
