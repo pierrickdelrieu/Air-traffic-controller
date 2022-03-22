@@ -1,20 +1,27 @@
 package AiTravelController.RunwayWaiting;
 
 import AiTravelController.Element.Element;
-
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Random;
 
 public class RunwayController {
+
+    private static RunwayController instance = null;
+    private final ArrayList<Runway> runways = new ArrayList<>();
+    public final int INIT_RUNWAY_NB = 8;
+
+    /**
+     * Private class constructor that can be called to get its instance only
+     */
     private RunwayController(){
         for (int i = 0; i < INIT_RUNWAY_NB; i++) {
             runways.add(new Runway());
         }
     }
 
-    private static RunwayController instance = null;
-
+    /**
+     * Static method to get or create instance of Singleton Runway Controller Class
+     */
     public static RunwayController getInstance() {
         if (instance == null) {
             instance = new RunwayController();
@@ -22,26 +29,28 @@ public class RunwayController {
         return instance;
     }
 
-    public final int INIT_RUNWAY_NB = 8;
-
-    private final ArrayList<Runway> runways = new ArrayList<>();
-
+    /**
+     * @return an Array List of all the runways
+     */
     public ArrayList<Runway> getRunways() {
         return runways;
+    }
+
+    /**
+     * Remove a runway from the Array List of Runways
+     * @param runway : Runway to remove
+     */
+    public void removeRunway(Runway runway){
+        runways.remove(runway);
     }
 
     public void clear() {
         for (Runway runway : runways) {
             runway.empties();
         }
-
         for (int i = 0; i < 8 - runways.size(); i++) {
             runways.add(new Runway());
         }
-    }
-
-    public void removeRunway(Runway runway){
-        runways.remove(runway);
     }
 
 
@@ -54,6 +63,7 @@ public class RunwayController {
             runway.reduceTimeOfElement(hour);
         }
     }
+
     /**
      * Getter of N empty random runway
      * @param number desired number of runways
@@ -154,6 +164,9 @@ public class RunwayController {
         return cpt;
     }
 
+    /**
+     * @return an integer that corresponds to the number of full runway
+     */
     public int getNbFullRunway() {
         return runways.size() - getNbEmptyRunway();
     }
@@ -179,8 +192,7 @@ public class RunwayController {
     }
 
     /**
-     *
-     * @param time
+     * @param time : integer which corresponds to the runway time to add to Planes on runways
      */
     public void addRunwayTimeToPlanes(int time){
         for (Runway runway : runways) {

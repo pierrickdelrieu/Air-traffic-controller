@@ -9,23 +9,16 @@ public abstract class ElementOption extends Option {
         super(title, requirement, consq);
     }
 
+    /**
+     * Public getter to access to the private attribute of this Class
+     * @return Element
+     */
     public Element getElement() { return element; }
 
-//    @Override
-//    public void apply() {
-//        if (element != null) {
-//            System.out.println("Option is apply specific");
-//            apply(element);
-//        } else {
-//            System.out.println("Option is apply main");
-//            super.apply();
-//        }
-//    }
-
-//    public void apply(Element e) {
-//
-//    }
-
+    /**
+     * Public setter to set the reference of the private attribute of this Class
+     * @param e : Element which will be the private attribute of this Class
+     */
     public void setElement(Element e) {
         this.element = e;
     }

@@ -26,7 +26,7 @@ public class Plane extends Element {
 
 
     /**
-     * @return int hour of fuel of the plane
+     * @return an integer which corresponds to the hour of fuel of the plane
      */
     public int getHourOfFuel() {
         return hourOfFuel;
@@ -34,15 +34,22 @@ public class Plane extends Element {
 
     /**
      * Setter of hour of fuel of the plane
-     * @param hour int new value of hour of fuel
+     * @param hour : integer which corresponds to the new value of hourOfFuel
      */
     public void setHourOfFuel(int hour) {
         this.hourOfFuel = hour;
     }
 
+    /**
+     * @param hour : integer which corresponds to the number of fuel hour to add for a plane
+     */
     public void increaseHourOfFuel(int hour) {
         this.hourOfFuel += hour;
     }
+
+    /**
+     * @param hour : integer which corresponds to the number of fuel hour to remove for a plane
+     */
     public void decreaseHourOfFuel(int hour) {
         this.hourOfFuel -= hour;
     }

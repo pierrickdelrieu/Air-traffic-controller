@@ -17,47 +17,63 @@ public class WaitingPlaneController {
     }
 
     /**
-     *
-     * @return
+     * Verifies the size of the Array List that contains all the Waiting Planes
+     * @return true if there is no waiting plane, false if there is
      */
     public static boolean isEmpty() {
         return planes.size() == 0;
     }
 
     /**
-     *
-     * @param hours
+     * Remove the level of fuel hours from the Waiting Planes
+     * @param hours : integer which corresponds to the number of fuel hour to remove
      */
     public static void removeFuel(int hours) {
         planes.forEach(plane -> plane.setHourOfFuel(plane.getHourOfFuel() - hours));
     }
 
     /**
-     *
+     * Add fuel hours to the Waiting Planes
+     * @param hours : integer which corresponds to the number of fuel hour to add
      */
     public static void addFuel(int hours){
         planes.forEach((plane) -> plane.increaseHourOfFuel(hours));
     }
 
     /**
-     *
-     * @return
+     * Verifies if there is Waiting Planes on air or no
+     * @return true if there is waiting plane, false else
      */
     public static boolean hasWaitingPlane(){
         return !planes.isEmpty();
     }
 
     /**
-     *
-     * @param p
+     * Remove a plane from the Waiting Planes
+     * @param p : Plane to remove from the Waiting Plane Array List
      */
     public static void removePlane(Plane p){
         planes.remove(p);
     }
 
     /**
-     *
-     * @param hour
+     * Add a plane to the Waiting Planes
+     * @param plane : Plane to add to the Waiting Plane Array List
+     */
+    public static void addPlane(Plane plane){
+        planes.add(plane);
+    }
+
+    /**
+     * @return a random plane that is in the Waiting Planes Array List
+     */
+    public static Plane getRandomPlane(){
+        Random rand = new Random();
+        return planes.get(rand.nextInt(planes.size()));
+    }
+
+    /**
+     * @param hour : integer that corresponds to the number of fuel hour to remove to all the Waiting Planes
      */
     public static void removeFuelForAllPlane(int hour){
         planes.forEach((plane) -> {
@@ -67,22 +83,5 @@ public class WaitingPlaneController {
             }
         });
         planes.removeIf(each -> each.getHourOfFuel() <= 0);
-    }
-
-    /**
-     *
-     * @param plane
-     */
-    public static void addPlane(Plane plane){
-        planes.add(plane);
-    }
-
-    /**
-     *
-     * @return
-     */
-    public static Plane getRandomPlane(){
-        Random rand = new Random();
-        return planes.get(rand.nextInt(planes.size()));
     }
 }

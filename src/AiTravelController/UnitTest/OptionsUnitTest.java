@@ -18,6 +18,10 @@ import java.util.concurrent.locks.Lock;
 
 public class OptionsUnitTest {
 
+
+    /**
+     * Displays the boolean result of each UnitTest Option
+     */
     public static void MainOptionsUnitTest(){
 
         System.out.println("AirRefuelingTest : " + AirRefuelingTest());
@@ -40,6 +44,9 @@ public class OptionsUnitTest {
 
     }
 
+    /**
+     * @return true if all Planes in air have been refueled, false if not
+     */
     public static boolean AirRefuelingTest(){
         AirTravelController.getInstance();
         AirRefuelingOpt option = new AirRefuelingOpt();
@@ -87,6 +94,9 @@ public class OptionsUnitTest {
         return true;
     }
 
+    /**
+     * @return true if the landing of a plane succeeds, false if not
+     */
     public static boolean AllowLandingTest() {
         AllowLandingOpt option = new AllowLandingOpt();
         option.setElement(new Plane( 3, 3, 3));
@@ -144,6 +154,9 @@ public class OptionsUnitTest {
         return true;
     }
 
+    /**
+     * @return true if the fuel level of all Planes in air have been decreased by 1 hour, false if not
+     */
     public static boolean CrossWindsTest() {
         AirTravelController.getInstance();
         CrossWindsOpt option = new CrossWindsOpt();
@@ -189,6 +202,9 @@ public class OptionsUnitTest {
         return true;
     }
 
+    /**
+     * @return true if a random runway have been emptied, false if not
+     */
     public static boolean EmptyRandomRunwayTest(){
         EmptyRandomRunwayOpt option = new EmptyRandomRunwayOpt();
 
@@ -246,6 +262,10 @@ public class OptionsUnitTest {
         return true;
     }
 
+    /**
+     *
+     * @return true if 2 runways have been blocked for 4 hours, false if not
+     */
     public static boolean GetPoliceInvolvedTest(){
         GetPoliceInvolvedOpt option = new GetPoliceInvolvedOpt();
 
@@ -312,7 +332,9 @@ public class OptionsUnitTest {
         return RunwayController.getInstance().getNbEmptyRunway() == 6;
     }
 
-
+    /**
+     * @return true if a runway have been definitively removed, false if not
+     */
     public static boolean IceStormTest() {
         IceStormOpt option = new IceStormOpt();
 
@@ -332,7 +354,9 @@ public class OptionsUnitTest {
         return count == 7; //7 runways should be used by the added planes
     }
 
-
+    /**
+     * @return true if the runway time of all the Planes on runways have been increased by 2 hours, false if not
+     */
     public static boolean IcyRunwaysTest() {
         IcyRunWaysOpt option = new IcyRunWaysOpt();
 
@@ -358,7 +382,9 @@ public class OptionsUnitTest {
         return runway[0].getElement().getRunwayTime() == 3;
     }
 
-
+    /**
+     * @return true if a waiting plane on air have been removed and 100 passengers killed, false if not
+     */
     public static boolean LetTheManGoTest() {
         LetTheManGoOpt option = new LetTheManGoOpt();
 
@@ -377,7 +403,9 @@ public class OptionsUnitTest {
         return true;
     }
 
-
+    /**
+     * @return true if a plane lands and occupies a runway for 7 hours, false if not
+     */
     public static boolean LetThemLandTest() {
         LetThemLandOpt option = new LetThemLandOpt();
 
@@ -397,7 +425,9 @@ public class OptionsUnitTest {
         return true;
     }
 
-
+    /**
+     * @return true if a runway have been blocked for 8 hours, false if not
+     */
     public static boolean LockdownTheRunwayTest() {
         LockdownTheRunwayOpt option = new LockdownTheRunwayOpt();
 
@@ -417,6 +447,9 @@ public class OptionsUnitTest {
         return true;
     }
 
+    /**
+     * @return true if a plane joins the waiting planes, false if not
+     */
     public static boolean PlaceOnStandbyTest() {
         PlaceOnStandbyOpt option = new PlaceOnStandbyOpt();
 
@@ -430,14 +463,15 @@ public class OptionsUnitTest {
         // ********** Apply Test **********
         int previousNumberOfWaitingPlane = WaitingPlaneController.getPlanes().size();
 
-
         option.apply();
-
 
         return WaitingPlaneController.getPlanes().size() == previousNumberOfWaitingPlane + 1;
 
     }
 
+    /**
+     * @return true if the planes lands and 100 passengers have been killed, false if not
+     */
     public static boolean PlanesLandAnywaysTest(){
         PlanesLandAnywaysOpt option = new PlanesLandAnywaysOpt();
 
@@ -457,6 +491,9 @@ public class OptionsUnitTest {
 
     }
 
+    /**
+     * @return true if 50 people died, false if not
+     */
     public static boolean RefuseThemTest(){
         RefuseThemOpt option = new RefuseThemOpt();
 
@@ -476,6 +513,9 @@ public class OptionsUnitTest {
 
     }
 
+    /**
+     * @return true if the number of dead passenger have been reduced by 100, false if not
+     */
     public static boolean RescueTeamTest(){
         RescueTeamOpt option = new RescueTeamOpt();
 
@@ -495,6 +535,9 @@ public class OptionsUnitTest {
 
     }
 
+    /**
+     * @return true if a runway have been blocked for 10 hours, false if not
+     */
     public static boolean SpaceToProtestTest(){
         SpaceToProtestOpt option = new SpaceToProtestOpt();
 
