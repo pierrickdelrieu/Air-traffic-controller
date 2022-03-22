@@ -21,7 +21,7 @@ public class Obstacle extends Element {
         switch (this.type) {
             case POLICE -> {return "  POLICE : " + getRunwayTime() + "h  ";}
             case PROTESTOR -> {return "PROTESTOR : " + getRunwayTime() + "h ";}
-            default -> {return "O";}
+            default -> {return " BLCOKED : " + getRunwayTime() + "h ";}
         }
     }
 
