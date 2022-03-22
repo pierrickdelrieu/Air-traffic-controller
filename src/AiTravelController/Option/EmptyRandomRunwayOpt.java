@@ -10,7 +10,7 @@ public class EmptyRandomRunwayOpt extends Option{
 
     @Override
     public boolean isValid() {
-        return RunwayController.getInstance().INIT_RUNWAY_NB - RunwayController.getInstance().getNbEmptyRunway() != 0;
+        return RunwayController.getInstance().getNbFullRunway() >= 1;
     }
 
     @Override

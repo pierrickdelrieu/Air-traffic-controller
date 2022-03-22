@@ -90,7 +90,7 @@ public class RunwayController {
      * @return Array of full runway
      */
     public Runway[] getNFullRandomRunway(int number) {
-        if (number <= runways.size() - getNbEmptyRunway()) {
+        if (number <= getNbFullRunway()) {
             Runway[] x = new Runway[number];
 
             Random rand = new Random();
@@ -154,12 +154,16 @@ public class RunwayController {
         return cpt;
     }
 
+    public int getNbFullRunway() {
+        return runways.size() - getNbEmptyRunway();
+    }
+
     /**
      * Empty the elements of N random track
      * @param number int number of tracks to be emptied
      */
     public void emptiesNRandomRunway(int number) {
-        if (number <= (runways.size() - getNbEmptyRunway())) {
+        if (number <= (getNbFullRunway())) {
 
             Runway[] ways = getNFullRandomRunway(number);
 
@@ -168,7 +172,7 @@ public class RunwayController {
             }
 
         } else {
-            for (Runway runway: getNFullRandomRunway(runways.size() - getNbEmptyRunway())) {
+            for (Runway runway: getNFullRandomRunway(getNbFullRunway())) {
                 runway.empties();
             }
         }
