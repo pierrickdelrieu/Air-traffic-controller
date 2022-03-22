@@ -31,7 +31,6 @@ public class Request implements Cloneable {
 
     public boolean chooseOption(Option option) {
         if (options.contains(option)) {
-            System.out.println("Option is apply");
             option.apply();
             return true;
         }

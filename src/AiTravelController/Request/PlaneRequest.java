@@ -43,12 +43,10 @@ public class PlaneRequest extends Request implements Cloneable {
     @Override
     public boolean chooseOption(Option option) {
         if (getOptions().contains(option)) {
-            System.out.println("Option is apply correctly");
+            ((ElementOption) option).setElement(plane);
             option.apply();
             return true;
         }
-        System.out.println("Option is apply incorrectly");
-
         return false;
     }
 
