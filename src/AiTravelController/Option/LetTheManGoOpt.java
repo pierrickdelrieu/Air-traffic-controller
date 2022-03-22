@@ -6,7 +6,7 @@ import AiTravelController.RunwayWaiting.WaitingPlaneController;
 public class LetTheManGoOpt extends Option{
 
     public LetTheManGoOpt() {
-        super("Let the man go", "None", "He crashes the plane into another random Waiting plane" +
+        super("Let the man go", "None", "He crashes the plane into another random Waiting plane " +
                 "and saves christmas. Remove the waiting plane (no cost) and kill 100 passengers.");
     }
 
