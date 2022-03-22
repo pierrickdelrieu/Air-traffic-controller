@@ -6,8 +6,6 @@ import AiTravelController.Option.OptionController;
 
 import java.util.*;
 
-enum RequestType {PLANE_REQUEST, DEFAULT};
-
 public class RequestController {
     private static RequestController instance = null;
     private ArrayList<Request> requests = new ArrayList<Request>();;
