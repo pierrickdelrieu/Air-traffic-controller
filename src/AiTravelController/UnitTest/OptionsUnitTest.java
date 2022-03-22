@@ -232,11 +232,14 @@ public class OptionsUnitTest {
 
         int previousNumberOfEmptyRunways = RunwayController.getInstance().getNbEmptyRunway();
 
+//        LandingPlaneMenu.getInstance().displayBoard();
+//        System.out.println(RunwayController.getInstance().getNbEmptyRunway());
         option.apply();
 
-        //LandingPlaneMenu.getInstance().displayBoard();
+//        System.out.println(RunwayController.getInstance().getNbEmptyRunway());
+//        LandingPlaneMenu.getInstance().displayBoard();
 
-        if(RunwayController.getInstance().getNbEmptyRunway() == previousNumberOfEmptyRunways + 1)
+        if(RunwayController.getInstance().getNbEmptyRunway() != previousNumberOfEmptyRunways + 1)
             return false;
 
 

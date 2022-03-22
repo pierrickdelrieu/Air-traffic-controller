@@ -106,8 +106,8 @@ public class RunwayController {
                 runwayIndex.add(index);
             }
 
-            for (Integer index: runwayIndex) {
-                x[index] = runways.get(runwayIndex.get(index));
+            for (int i = 0; i < runwayIndex.size(); i++ ) {
+                x[i] = runways.get(runwayIndex.get(i));
             }
 
             return x;
