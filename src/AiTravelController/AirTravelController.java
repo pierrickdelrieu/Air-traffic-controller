@@ -18,7 +18,7 @@ public class AirTravelController {
 
     private AirTravelController(){} // fix instantiation of this classes
 
-    private int numberDied = 310;
+    private int numberDied = 0;
     private int numberHour = 0;
     private ArrayList<Request> currentRequest = new ArrayList<>();
 

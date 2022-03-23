@@ -141,7 +141,7 @@ public abstract class Menu {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             else
                 Runtime.getRuntime().exec("clear");
-        } catch (IOException | InterruptedException ex) {}
+        } catch (IOException | InterruptedException ignored) {}
 
     }
 
@@ -151,7 +151,7 @@ public abstract class Menu {
      */
     public static void pause(){
 
-        System.out.println("Press enter to continue ...");
+        System.out.println("\n\nPress enter to quit ...");
         try {
             System.in.read();
         } catch (IOException e) {
