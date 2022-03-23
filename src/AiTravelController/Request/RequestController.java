@@ -1,5 +1,6 @@
 package AiTravelController.Request;
 
+import AiTravelController.AirTravelController;
 import AiTravelController.Element.Plane;
 import AiTravelController.Option.Option;
 import AiTravelController.Option.OptionController;
@@ -66,10 +67,22 @@ public class RequestController {
         requests.add(fundingEvent);
 
 
-        Request jumboJet = new Request(15.0, "Jumbo Jet",
+        /*Request jumboJet = new Request(15.0, "Jumbo Jet",
                 "A large aircraft carrying [300-600] passengers with [4-6] hours of fuel wishes to land." +
                         "\nIt needs [4-6] hours of runway time.",
                 new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))));
+        requests.add(jumboJet);*/
+
+        Request jumboJet = new PlaneRequest(15.0, "Jumbo Jet",
+                "A large aircraft with %d hours of fuel wishes to land. It needs %d hours of runway time." +
+                        "\nThe plane is carrying %d passengers",
+                new ArrayList<Option>(List.of(options.get("allowLanding"), options.get("placeOnStandby"))),
+                Map.of("minHourOfFuel", 4,
+                        "maxHourOfFuel", 6,
+                        "minRunwayTime", 4,
+                        "maxRunwayTime", 6,
+                        "minNbPassenger", 300,
+                        "maxNbPassenger", 600));
         requests.add(jumboJet);
 
 
@@ -114,6 +127,7 @@ public class RequestController {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
 
+
         for(int i=0 ; i<number ; i++){
             Random rand = new Random();
 
@@ -138,7 +152,34 @@ public class RequestController {
             }
         }
 
-//        chosenRequests.add(requests.get(0).clone());
+
+/*
+        if(AirTravelController.getInstance().getNumberHour() == 0){
+            chosenRequests.add(requests.get(0).clone()); // allow landing -> land
+            chosenRequests.add(requests.get(3).clone()); // jumbo jet -> wait
+            chosenRequests.add(requests.get(5).clone()); // snake -> don t land -> kill 50 p
+        }
+
+        else if(AirTravelController.getInstance().getNumberHour() == 1){
+            chosenRequests.add(requests.get(6).clone()); // protest -> get police
+            chosenRequests.add(requests.get(4).clone()); // bad weather -> ice storm
+        }
+
+        else if(AirTravelController.getInstance().getNumberHour() == 2){
+            chosenRequests.add(requests.get(1).clone()); // emergency landing -> wait
+            chosenRequests.add(requests.get(0).clone()); // allow landing -> wait
+            chosenRequests.add(requests.get(7).clone()); // john mcclane -> let the man go
+        }
+
+        else if(AirTravelController.getInstance().getNumberHour() == 3){
+            chosenRequests.add(requests.get(1).clone()); // emergency landing -> wait
+        }
+*/
+
+
+
+
+
 //        chosenRequests.add(requests.get(7).clone());
 
         return chosenRequests;
