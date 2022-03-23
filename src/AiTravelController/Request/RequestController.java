@@ -127,7 +127,7 @@ public class RequestController {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
 
-
+/*
         for(int i=0 ; i<number ; i++){
             Random rand = new Random();
 
@@ -141,7 +141,7 @@ public class RequestController {
 
                 //System.out.println("min : " + min + " max : " + max);
                 if( (min <= nbRand) && (nbRand < max ) ){
-//                    chosenRequests.add(new Request(requests.get(i)));
+                    //chosenRequests.add(new Request(requests.get(i)));
                     chosenRequests.add(requests.get(i).clone());
                 }
 
@@ -151,9 +151,10 @@ public class RequestController {
                 }
             }
         }
+        //*/
+        
 
-
-/*
+        // test scenario
         if(AirTravelController.getInstance().getNumberHour() == 0){
             chosenRequests.add(requests.get(0).clone()); // allow landing -> land
             chosenRequests.add(requests.get(3).clone()); // jumbo jet -> wait
@@ -174,13 +175,8 @@ public class RequestController {
         else if(AirTravelController.getInstance().getNumberHour() == 3){
             chosenRequests.add(requests.get(1).clone()); // emergency landing -> wait
         }
-*/
+        //*/
 
-
-
-
-
-//        chosenRequests.add(requests.get(7).clone());
 
         return chosenRequests;
     }
