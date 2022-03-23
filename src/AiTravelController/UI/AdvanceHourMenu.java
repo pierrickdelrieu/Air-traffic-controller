@@ -33,11 +33,14 @@ public class AdvanceHourMenu extends Menu {
 
     @Override
     public void content() {
-        if (AirTravelController.getInstance().getNumberDied() >= 350) {
+        if (AirTravelController.getInstance().getNumberDied() >= AirTravelController.getInstance().getMAX_KILL()) {
             System.out.println("                      ***** GAME OVER *****");
+            System.out.println("You kill too many people");
+            pause();
             System.exit(0);
-        } else if (AirTravelController.getInstance().getNumberHour() > 24){
+        } else if (AirTravelController.getInstance().getNumberHour() >= AirTravelController.getInstance().getMAX_HOUR()){
             System.out.println("                    ***** YOU HAVE WON *****");
+            pause();
             System.exit(0);
         } else {
             Random rand = new Random();

@@ -2,6 +2,7 @@ package AiTravelController.UI;
 
 import AiTravelController.AirTravelController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -133,8 +134,30 @@ public abstract class Menu {
      * Removing all content of the console
      * Does not work in an IDE
      */
-    public static void clearConsole(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+    public static void clearConsole()
+    {
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
+
     }
+
+    /**
+     * Pause the console
+     *
+     */
+    public static void pause(){
+
+        System.out.println("Press enter to continue ...");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
