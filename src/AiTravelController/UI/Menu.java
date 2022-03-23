@@ -29,7 +29,7 @@ public abstract class Menu {
      * Header of the page
      */
     public void header() {
-        System.out.printf("                                             %d passenger are killed\n", AirTravelController.getInstance().getNumberDied());
+        System.out.printf("                                             %d passengers killed\n", AirTravelController.getInstance().getNumberDied());
         System.out.printf("                                                  Current time: %d h\n", AirTravelController.getInstance().getNumberHour());
     }
 
