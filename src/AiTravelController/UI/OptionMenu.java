@@ -32,7 +32,9 @@ public class OptionMenu {
             case LANDING_MENU -> {LandingPlaneMenu.getInstance().show();}
             case REQUEST_MENU -> {RequestMenu.getInstance().show();}
             case ABOUT_MENU -> {AboutMenu.getInstance().show();}
-            case QUIT -> {System.exit(0);}
+            case QUIT -> {
+                Menu.pause();
+                System.exit(0);}
             case ADVANCE_HOUR_MENU -> {
                 AirTravelController.getInstance().setNumberHour(AirTravelController.getInstance().getNumberHour() + 1);
                 RunwayController.getInstance().reduceBlockingTimeOfElementsOnRunways(1);

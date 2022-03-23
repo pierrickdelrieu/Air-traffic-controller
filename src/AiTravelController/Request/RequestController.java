@@ -126,7 +126,7 @@ public class RequestController {
     public ArrayList<Request> chooseRandomRequest(int number) {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
-        
+
         for(int i=0 ; i<number ; i++){
             Random rand = new Random();
 
