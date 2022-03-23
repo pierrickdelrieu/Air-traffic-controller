@@ -152,7 +152,7 @@ public class RequestController {
             }
         }
         //*/
-        
+
 
         // test scenario
         if(AirTravelController.getInstance().getNumberHour() == 0){
