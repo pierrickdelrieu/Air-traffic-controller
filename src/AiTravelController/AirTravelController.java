@@ -22,6 +22,9 @@ public class AirTravelController {
     private int numberHour = 0;
     private ArrayList<Request> currentRequest = new ArrayList<>();
 
+    private final int MAX_HOUR = 24;
+    private final int MAX_KILL = 350;
+
     /**
      * Static method to get or create instance of Singleton AirTravelController Class
      */
@@ -114,5 +117,13 @@ public class AirTravelController {
         this.numberDied = 0;
         RunwayController.getInstance().clear();
         WaitingPlaneController.clear();
+    }
+
+    public int getMAX_HOUR() {
+        return MAX_HOUR;
+    }
+
+    public int getMAX_KILL() {
+        return MAX_KILL;
     }
 }

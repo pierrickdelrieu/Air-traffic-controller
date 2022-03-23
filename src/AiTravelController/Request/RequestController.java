@@ -126,8 +126,7 @@ public class RequestController {
     public ArrayList<Request> chooseRandomRequest(int number) {
 
         ArrayList<Request> chosenRequests = new ArrayList<>();
-
-/*
+        
         for(int i=0 ; i<number ; i++){
             Random rand = new Random();
 
@@ -153,7 +152,7 @@ public class RequestController {
         }
         //*/
 
-
+        /*
         // test scenario
         if(AirTravelController.getInstance().getNumberHour() == 0){
             chosenRequests.add(requests.get(0).clone()); // allow landing -> land
