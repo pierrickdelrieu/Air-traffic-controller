@@ -141,7 +141,7 @@ public class RequestController {
                 //System.out.println("min : " + min + " max : " + max);
                 if( (min <= nbRand) && (nbRand < max ) ){
                     //chosenRequests.add(new Request(requests.get(i)));
-                    chosenRequests.add(requests.get(i).clone());
+                    chosenRequests.add(requests.get(j).clone());
                 }
 
                 if(j < requests.size() - 1) {
